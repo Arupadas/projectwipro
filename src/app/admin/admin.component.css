@@ -1,54 +1,26 @@
-/* Global Styles */
+/* admin-dashboard.css */
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0; /* Light gray background */
-  }
-  
-  h1 {
-    text-align: center;
-    margin-bottom: 20px;
-     /* Green background for admin dashboard */
-     background-color: #4CAF50;
-    color:white; /* White text for admin dashboard */
-    padding: 10px;
-  }
-  
-  section {
-    display: inline-block;
-    width: 45%;
-    margin: 20px;
+section {
+    background-color: #f7f7f7;
     padding: 20px;
-    background-color: #000; /* Black background for management sections */
-    border: 1px solid #333;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    color: #fff; /* White text for management sections */
   }
   
   h2 {
     margin-top: 0;
-    color: #fff; /* White text for management section headings */
   }
   
-  .app-component {
+  app-course-management,
+  app-batch-management,
+  app-user-management,
+  app-report {
     padding: 20px;
   }
   
-  /* Flexbox layout to arrange sections in two rows */
-  
-  .container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  
-  section:nth-child(1), section:nth-child(2) {
-    margin-bottom: 40px;
+  /* Add some spacing between sections */
+  section + section {
+    margin-top: 20px;
   }

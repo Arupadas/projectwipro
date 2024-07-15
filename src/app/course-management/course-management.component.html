@@ -1,1 +1,25 @@
-<p>course-management works!</p>
+
+<!-- Course Management UI -->
+<h2>Course Management</h2>
+<form (ngSubmit)="addCourse()">
+  <label for="course-name">Course Name:</label>
+  <input type="text" id="course-name" [(ngModel)]="courseForm.name">
+  <label for="course-description">Course Description:</label>
+  <textarea id="course-description" [(ngModel)]="courseForm.description"></textarea>
+  <button type="submit">Add Course</button>
+</form>
+<ul>
+  <li *ngFor="let course of courses">
+    <div class="course-info">
+      <h3>{{ course.name }}</h3>
+      <p>{{ course.description }}</p>
+    </div>
+    <div class="course-actions">
+      <button (click)="updateCourse(course)">Edit</button>
+      <button (click)="deleteCourse(course)">Delete</button>
+      <button (click)="createCalendar(course)">Create Calendar</button>
+      <button (click)="editCalendar(course)">Edit Calendar</button>
+      <button (click)="deleteCalendar(course)">Delete Calendar</button>
+    </div>
+  </li>
+</ul>
