@@ -1,45 +1,31 @@
-/* Styles for Course Management component */
-.course-management-container {
-    max-width: 800px;
-    margin: 40px auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.course-management {
+    max-width: 600px;
+    margin: 0 auto;
   }
   
-  .course-management-container h2 {
-    margin-top: 0;
+  .form-group {
+    margin-bottom: 15px;
   }
   
-  .course-management-container form {
-    margin-bottom: 20px;
+  label {
+    display: block;
+    margin-bottom: 5px;
   }
   
-  .course-management-container ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .course-management-container li {
-    margin-bottom: 10px;
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
-  }
-  
-  .course-management-container li:last-child {
-    border-bottom: none;
-  }
-  
-  .course-management-container button {
-    margin-right: 10px;
-  }
-  
-  .course-management-container textarea {
+  input,
+  textarea,
+  button {
     width: 100%;
-    height: 100px;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
+    padding: 8px;
+    margin-bottom: 10px;
   }
+  
+  .daily-tasks {
+    margin-top: 20px;
+  }
+  
+  .task {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+  } 
