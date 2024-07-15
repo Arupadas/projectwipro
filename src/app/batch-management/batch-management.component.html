@@ -1,1 +1,46 @@
-<p>batch-management works!</p>
+<div class="container mt-4">
+    <h2>Batch Management</h2>
+    <form [formGroup]="batchForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="batchName">Batch Name:</label>
+        <input type="text" id="batchName" class="form-control" formControlName="batchName">
+      </div>
+  
+      <div class="form-group">
+        <label for="courseId">Course ID:</label>
+        <input type="number" id="courseId" class="form-control" formControlName="courseId">
+      </div>
+  
+      <div class="form-group">
+        <label for="batchTutor">Batch Tutor:</label>
+        <input type="text" id="batchTutor" class="form-control" formControlName="batchTutor">
+      </div>
+  
+      <div formArrayName="enrollments">
+        <div *ngFor="let enrollment of enrollments.controls; let i=index" [formGroupName]="i" class="form-group">
+          <h5>Enrollment {{ i + 1 }}</h5>
+          <label for="employeeId">Employee ID:</label>
+          <input type="number" id="employeeId" class="form-control" formControlName="employeeId">
+  
+          <label for="status">Status:</label>
+          <input type="number" id="status" class="form-control" formControlName="status">
+  
+          <button type="button" class="btn btn-danger mt-2" (click)="removeEnrollment(i)">Remove Enrollment</button>
+        </div>
+      </div>
+  
+      <button type="button" class="btn btn-secondary mt-3" (click)="addEnrollment()">Add Enrollment</button>
+      <button type="submit" class="btn btn-primary mt-3">Submit</button>
+    </form>
+  <div>
+
+    
+      <li *ngFor="let batch of batches" class="list-group-item">
+        <h5>{{ batch.batchName }}</h5>
+        <p>Course ID: {{ batch.courseId }}</p>
+        <p>Batch Tutor: {{ batch.batchTutor }}</p>
+        <button class="btn btn-info" (click)="editBatch(batch)">Edit</button>
+        <button class="btn btn-danger" (click)="deleteBatch(batch)">Delete</button>
+      </li>
+
+  </div>

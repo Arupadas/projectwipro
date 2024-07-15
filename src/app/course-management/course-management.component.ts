@@ -1,43 +1,70 @@
 import { Component } from '@angular/core';
 
+interface DailyTask {
+  id: number;
+  day: string;
+  taskDescription: string;
+  courseCalendarId: number;
+}
+
+interface CourseCalendar {
+  id: number;
+  courseId: number;
+  startDate: string;
+  endTime: string;
+  dailyTasks: DailyTask[];
+}
+
+interface Course {
+  courseName: string;
+  courseDescription: string;
+  duration: number;
+  courseCalendar: CourseCalendar;
+}
+
 @Component({
   selector: 'app-course-management',
   templateUrl: './course-management.component.html',
-  styleUrls: ['./course-management.component.css']
+  styleUrls: ['./course-management.component.css'],
 })
 export class CourseManagementComponent {
-  courses: any[] = [];
-  courseForm: any = {};
-  calendarForm: any = {};
+  showForm: boolean = false;
 
-  addCourse(): void {
-    this.courses.push(this.courseForm);
-    this.courseForm = {};
+  course: Course = {
+    courseName: '',
+    courseDescription: '',
+    duration: 0,
+    courseCalendar: {
+      id: 0,
+      courseId: 0,
+      startDate: '',
+      endTime: '',
+      dailyTasks: [
+        {
+          id: 0,
+          day: '',
+          taskDescription: '',
+          courseCalendarId: 0,
+        },
+      ],
+    },
+  };
+
+  addTask() {
+    this.course.courseCalendar.dailyTasks.push({
+      id: 0,
+      day: '',
+      taskDescription: '',
+      courseCalendarId: 0,
+    });
   }
 
-  updateCourse(course: any): void {
-    const index = this.courses.indexOf(course);
-    if (index !== -1) {
-      this.courses[index] = course;
-    }
+  removeTask(index: number) {
+    this.course.courseCalendar.dailyTasks.splice(index, 1);
   }
 
-  deleteCourse(course: any): void {
-    const index = this.courses.indexOf(course);
-    if (index !== -1) {
-      this.courses.splice(index, 1);
-    }
-  }
-
-  createCalendar(course: any): void {
-    course.calendar = {};
-  }
-
-  editCalendar(course: any): void {
-    // Update calendar logic here
-  }
-
-  deleteCalendar(course: any): void {
-    delete course.calendar;
+  onSubmit() {
+    console.log('Course created:', this.course);
+    // Add your form submission logic here
   }
 }
