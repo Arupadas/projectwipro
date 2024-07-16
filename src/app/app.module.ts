@@ -15,6 +15,8 @@ import { BatchManagementComponent } from './batch-management/batch-management.co
 import { UserManagementComponent } from './user-management/user-management.component';
 import { ReportComponent } from './report/report.component';
 import { CourseManagementComponent } from './course-management/course-management.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 
 @NgModule({
@@ -23,7 +25,7 @@ import { CourseManagementComponent } from './course-management/course-management
     LoginComponent,
     AdminComponent,
     ManagerComponent,
-    
+
     BatchManagementComponent,
     UserManagementComponent,
     ReportComponent,
@@ -35,10 +37,12 @@ import { CourseManagementComponent } from './course-management/course-management
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule  ,
+    MatSlideToggleModule,
   
   ],
   providers: [
     AuthService,
+    provideAnimationsAsync(),
   
   ],
   bootstrap: [AppComponent]
