@@ -1,32 +1,33 @@
 <section>
-<div class="d-flex justify-content-center">
-  <button type="button" class="btn btn-primary" (click)="toggleAddCourseForm()" style="width: 30%;">
-    Add Course
-  </button>
-</div>
+  <div class="d-flex justify-content-center">
+    <button type="button" class="btn btn-primary" (click)="toggleAddCourseForm()" style="width: 30%;">
+      Add Course
+    </button>
+  </div>
 
-<!-- Add Course Form -->
-<div *ngIf="showAddCourseForm" class="mt-8 d-flex justify-content-center">
-  <form (ngSubmit)="addCourse()" style="width: 30%;">
-    <div class="form-group">
-      <label for="courseName">Course Name</label>
-      <input type="text" class="form-control" id="courseName" [(ngModel)]="course.courseName" name="courseName" required>
-    </div>
-    <div class="form-group">
-      <label for="courseDescription">Course Description</label>
-      <textarea class="form-control" id="courseDescription" [(ngModel)]="course.courseDescription" name="courseDescription" required></textarea>
-    </div>
-    <div class="form-group">
-      <label for="duration">Duration (hours)</label>
-      <input type="number" class="form-control" id="duration" [(ngModel)]="course.duration" name="duration" required>
-    </div>
-    <div class="d-flex justify-content-center">
-      <button type="submit" class="btn btn-success mt-2">Save Course</button>
-      <button type="button" class="btn btn-secondary mt-2 ml-2" (click)="toggleAddCourseForm()">Cancel</button>
-    </div>
-  </form>
-</div>
+  <!-- Add Course Form -->
+  <div *ngIf="showAddCourseForm" class="mt-8 d-flex justify-content-center">
+    <form (ngSubmit)="addCourse()" style="width: 30%;">
+      <div class="form-group">
+        <label for="courseName">Course Name</label>
+        <input type="text" class="form-control" id="courseName" [(ngModel)]="course.courseName" name="courseName" required>
+      </div>
+      <div class="form-group">
+        <label for="courseDescription">Course Description</label>
+        <textarea class="form-control" id="courseDescription" [(ngModel)]="course.courseDescription" name="courseDescription" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="duration">Duration (hours)</label>
+        <input type="number" class="form-control" id="duration" [(ngModel)]="course.duration" name="duration" required>
+      </div>
+      <div class="d-flex justify-content-center">
+        <button type="submit" class="btn btn-success mt-2">Save Course</button>
+        <button type="button" class="btn btn-secondary mt-2 ml-2" (click)="toggleAddCourseForm()">Cancel</button>
+      </div>
+    </form>
+  </div>
 </section>
+
 <section>
   <div class="d-flex justify-content-center">
     <button type="button" class="btn btn-primary" (click)="toggleUpdateCourseForm()" style="width: 30%;">
@@ -37,7 +38,7 @@
     <form (ngSubmit)="updateCourse()" style="width: 30%;">
       <div class="form-group">
         <label for="courseId">Course Id</label>
-        <input type="number" class="form-control" id="courseId" [(ngModel)]="courseUpdate.Id" name="courseName" required>
+        <input type="number" class="form-control" id="courseId" [(ngModel)]="courseUpdate.Id" name="courseId" required>
       </div>
       <div class="form-group">
         <label for="courseName">Course Name</label>
@@ -58,10 +59,63 @@
     </form>
   </div>
 </section>
+
 <section>
   <div class="d-flex justify-content-center">
-    <button type="button" class="btn btn-primary" (click)="toggleAddCourseForm()" style="width: 30%;">
+    <button type="button" class="btn btn-primary" (click)="toggleAddCourseCalendarForm()" style="width: 30%;">
       Add Course Calendar
     </button>
   </div>
-</section>  
+  <div *ngIf="showAddCourseCalendarForm" class="mt-8 d-flex justify-content-center">
+    <form (ngSubmit)="addCourseCalendar()" style="width: 30%;">
+      <div class="form-group">
+        <label for="courseId">Course Id</label>
+        <input type="number" class="form-control" id="courseId" [(ngModel)]="coursecalendar.courseId" name="courseId" required>
+      </div>
+      <div class="form-group">
+        <label for="startDate">Start Date</label>
+        <input type="date" class="form-control" id="startDate" [(ngModel)]="coursecalendar.startDate" name="startDate" required>
+      </div>
+      <div class="form-group">
+        <label for="endDate">End Date</label>
+        <input type="date" class="form-control" id="endDate" [(ngModel)]="coursecalendar.endDate" name="endDate" required>
+      </div>
+      <div class="d-flex justify-content-center">
+        <button type="submit" class="btn btn-success mt-2">Save Course Calendar</button>
+        <button type="button" class="btn btn-secondary mt-2 ml-2" (click)="toggleAddCourseCalendarForm()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<section>
+  <div class="d-flex justify-content-center">
+    <button type="button" class="btn btn-primary" (click)="toggleUpdateCourseCalendarForm()" style="width: 30%;">
+      Update Course Calendar
+    </button>
+  </div>
+  <div *ngIf="showUpdateCourseCalendarForm" class="mt-8 d-flex justify-content-center">
+    <form (ngSubmit)="updateCourseCalendar()" style="width: 30%;">
+      <div class="form-group">
+        <label for="Id">Id</label>
+        <input type="number" class="form-control" id="Id" [(ngModel)]="courseCalendarUpdate.Id" name="Id" required>
+      </div>
+      <div class="form-group">
+        <label for="courseId">Course Id</label>
+        <input type="number" class="form-control" id="courseId" [(ngModel)]="courseCalendarUpdate.courseId" name="courseId" required>
+      </div>
+      <div class="form-group">
+        <label for="startDate">Start Date</label>
+        <input type="date" class="form-control" id="startDate" [(ngModel)]="courseCalendarUpdate.startDate" name="startDate" required>
+      </div>
+      <div class="form-group">
+        <label for="endDate">End Date</label>
+        <input type="date" class="form-control" id="endDate" [(ngModel)]="courseCalendarUpdate.endDate" name="endDate" required>
+      </div>
+      <div class="d-flex justify-content-center">
+        <button type="submit" class="btn btn-success mt-2">Save Course Calendar</button>
+        <button type="button" class="btn btn-secondary mt-2 ml-2" (click)="toggleUpdateCourseCalendarForm()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</section>

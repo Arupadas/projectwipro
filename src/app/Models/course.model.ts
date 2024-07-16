@@ -13,4 +13,17 @@ export interface CourseWithId {
     courseDescription: string;
     duration: number;
   }
+
+  export interface CourseCalendar {
+    courseId: number;
+    startDate: Date;
+    endDate: Date;
+  }
+
+  export interface CourseCalendarUpdate {
+    Id:number ;
+    courseId: number;
+    startDate: Date;
+    endDate: Date;
+  }
   
