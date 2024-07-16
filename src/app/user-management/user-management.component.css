@@ -1,0 +1,87 @@
+.container {
+    background-color: #444;
+    color: white;
+    padding: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .btn-primary {
+    background-color: green;
+    color: white;
+  }
+  
+  .btn-primary:hover {
+    background-color: darkgreen;
+  }
+  
+  .btn-info {
+    background-color: green;
+    color: white;
+  }
+  
+  .btn-info:hover {
+    background-color: darkgreen;
+  }
+  
+  .btn-danger {
+    background-color: green;
+    color: white;
+  }
+  
+  .btn-danger:hover {
+    background-color: darkgreen;
+  }
+  
+  .user-item {
+    margin-bottom: 10px;
+  }
+  .user-list {
+    margin-top: 10%; /* Margin at the top of the user-list section */
+  }
+  .form-group {
+    margin-bottom: 15px; /* Margin below each form group */
+  }
+  .btn-info {
+    background-color: green;
+    color: white;
+    border: 1px solid white; /* White border for info button */
+  }
+  .form-control {
+    background-color: #333;
+    color: white;
+    border: 1px solid #555;
+  }
+  .container {
+    background-color: black;
+    color: white;
+    padding: 20px;
+  }
+  
+  .user-item {
+    border: 1px solid white; /* Example border for user item */
+    padding: 10px;
+  }
+  
+  .btn-primary {
+    background-color: green;
+    color: white;
+    border: 1px solid white;
+    justify-content: space-between; /* White border for primary button */
+  }
+  
+  .btn-info {
+    background-color: green;
+    color: white;
+    border: 1px solid white;
+    justify-content: space-between; /* White border for info button */
+  }
+  
+  .btn-danger {
+    background-color: green;
+    color: white;
+    border: 1px solid white; /* White border for danger button */
+  }
+    

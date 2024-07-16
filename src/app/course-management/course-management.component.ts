@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { CourseService } from '../Services/course.service';
+import { Course  , CourseWithId , CourseCalendar , CourseCalendarUpdate} from '../Models/course.model';
 
 @Component({
   selector: 'app-course-management',
@@ -6,38 +8,108 @@ import { Component } from '@angular/core';
   styleUrls: ['./course-management.component.css']
 })
 export class CourseManagementComponent {
-  courses: any[] = [];
-  courseForm: any = {};
-  calendarForm: any = {};
-
-  addCourse(): void {
-    this.courses.push(this.courseForm);
-    this.courseForm = {};
+  showAddCourseForm = false;
+  showUpdateCourseForm = false;
+  showAddCourseCalendarForm = false;
+  showUpdateCourseCalendarForm = false;
+  constructor(private courseService: CourseService) { }
+  course = {
+    courseName: '',
+    courseDescription: '',
+    duration: 0
+  };
+  courseUpdate = {
+    Id :0,
+    courseName: '',
+    courseDescription: '',
+    duration: 0
+  };
+  coursecalendar={
+    courseId: 0 ,
+    startDate: new Date ,
+    endDate: new Date
+  }
+  courseCalendarUpdate={
+    Id:0,
+    courseId: 0 ,
+    startDate: new Date ,
+    endDate: new Date
   }
 
-  updateCourse(course: any): void {
-    const index = this.courses.indexOf(course);
-    if (index !== -1) {
-      this.courses[index] = course;
-    }
+  toggleAddCourseForm() {
+    this.showAddCourseForm = !this.showAddCourseForm;
+  }
+  toggleUpdateCourseForm() {
+    this.showUpdateCourseForm = !this.showUpdateCourseForm;
+  }
+  toggleAddCourseCalendarForm() {
+    this.showAddCourseCalendarForm  = !this.showAddCourseCalendarForm ;
+  }
+  toggleUpdateCourseCalendarForm() {
+    this.showUpdateCourseCalendarForm = !this.showUpdateCourseCalendarForm;
   }
 
-  deleteCourse(course: any): void {
-    const index = this.courses.indexOf(course);
-    if (index !== -1) {
-      this.courses.splice(index, 1);
-    }
+  addCourse() {
+    this.courseService.addCourse(this.course).subscribe(
+      response => {
+        this.showAddCourseForm = !this.showAddCourseForm;
+        console.log('Course added successfully:', response);
+        // Optionally reset form or handle success
+      },
+      error => {
+        console.error('Error adding course:', error);
+        // Handle error appropriately
+      }
+    );
+  }
+  addCourseCalendar() {
+    this.courseService.addCourseCalendar(this.coursecalendar).subscribe(
+      response => {
+        this.showAddCourseCalendarForm = !this.showAddCourseCalendarForm;
+        console.log('Course added successfully:', response);
+        // Optionally reset form or handle success
+      },
+      error => {
+        console.error('Error adding course:', error);
+        // Handle error appropriately
+      }
+    );
   }
 
-  createCalendar(course: any): void {
-    course.calendar = {};
+  updateCourse() {
+    this.courseService.updateCourse(this.courseUpdate).subscribe(
+      response => {
+        console.log('Course updated successfully:', response);
+        this.showUpdateCourseForm = !this.showUpdateCourseForm;
+ // Optionally refresh data or close form after success
+      },
+      error => {
+        console.error('Error updating course:', error);
+        // Handle error appropriately
+      }
+    );
   }
 
-  editCalendar(course: any): void {
-    // Update calendar logic here
+  updateCourseCalendar() {
+    this.courseService.updateCourseCalendar(this.courseCalendarUpdate).subscribe(
+      response => {
+        console.log('Course updated successfully:', response);
+        this.showUpdateCourseCalendarForm = !this.showUpdateCourseCalendarForm;
+ // Optionally refresh data or close form after success
+      },
+      error => {
+        console.error('Error updating course:', error);
+        // Handle error appropriately
+      }
+    );
   }
 
-  deleteCalendar(course: any): void {
-    delete course.calendar;
+
+  resetForm() {
+    this.course = {
+      courseName: '',
+      courseDescription: '',
+      duration: 0
+    };
   }
 }
