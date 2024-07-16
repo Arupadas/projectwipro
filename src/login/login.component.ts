@@ -30,11 +30,11 @@ export class LoginComponent {
       this.errorMessage = null; // Clear any previous error messages
 
       // Navigate based on the role
-      const userRole = decodedToken['role']; // Adjust based on your token structure
+      const userRole = decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']; // Adjust based on your token structure
       if (userRole === 'Manager') {
         this.router.navigate(['/manager-dashboard']); // Adjust the route as needed
       } else if (userRole === 'Administrator') {
-        this.router.navigate(['/admin-dashboard']); // Adjust the route as needed
+        this.router.navigate(['/admin']); // Adjust the route as needed
       } else if (userRole === 'Employee') {
         this.router.navigate(['/employee-dashboard']); // Adjust the route as needed
       } else {

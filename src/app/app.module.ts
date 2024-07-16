@@ -33,7 +33,8 @@ import { CourseManagementComponent } from './course-management/course-management
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AppRoutingModule // Add AppRoutingModule here
+    AppRoutingModule  ,
+  
   ],
   providers: [
     AuthService,

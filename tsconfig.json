@@ -25,6 +25,10 @@
       "dom"
     ]
   },
+  "types": [
+    "bootstrap",
+    "node"
+  ],
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
