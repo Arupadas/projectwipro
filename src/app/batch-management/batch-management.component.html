@@ -1,46 +1,54 @@
-<div class="container mt-4">
-    <h2>Batch Management</h2>
-    <form [formGroup]="batchForm" (ngSubmit)="onSubmit()">
-      <div class="form-group">
-        <label for="batchName">Batch Name:</label>
-        <input type="text" id="batchName" class="form-control" formControlName="batchName">
+<div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h1 class="text-white">Batch Management</h1>
+  
+        <h2 class="text-white">Create / Edit / Delete Batch</h2>
+        <form (submit)="createBatch()">
+          <div class="form-group">
+            <label for="batchId" class="text-white"> Batch ID: </label>
+            <input type="text" class="form-control" id="batchId" [(ngModel)]="newBatch.id" name="batchId" required>
+          </div>
+          <div class="form-group">
+            <label for="batchName" class="text-white"> Batch Name: </label>
+            <input type="text" class="form-control" id="batchName" [(ngModel)]="newBatch.name" name="batchName" required>
+          </div>
+          <div class="form-group">
+            <label for="courseId" class="text-white"> Course ID: </label>
+            <input type="text" class="form-control" id="courseId" [(ngModel)]="newBatch.courseId" name="courseId" required>
+          </div>
+          <div class="form-group">
+            <label for="tutor" class="text-white"> Tutor: </label>
+            <input type="text" class="form-control" id="tutor" [(ngModel)]="newBatch.tutor" name="tutor" required>
+          </div>
+          <div class="form-group">
+            <label for="startDate" class="text-white"> Start Date: </label>
+            <input type="date" class="form-control" id="startDate" [(ngModel)]="newBatch.startDate" name="startDate" required>
+          </div>
+          <div class="form-group">
+            <label for="endDate" class="text-white"> End Date: </label>
+            <input type="date" class="form-control" id="endDate" [(ngModel)]="newBatch.endDate" name="endDate" required>
+          </div>
+          <div class="button-container">
+            <button type="submit" class="btn btn-success create-btn">Create Batch</button>
+            <button type="button" class="btn btn-success edit-btn">Edit Batch</button>
+            <button type="button" class="btn btn-success delete-btn">Delete Batch</button>
+          </div>
+        </form>
       </div>
   
-      <div class="form-group">
-        <label for="courseId">Course ID:</label>
-        <input type="number" id="courseId" class="form-control" formControlName="courseId">
-      </div>
-  
-      <div class="form-group">
-        <label for="batchTutor">Batch Tutor:</label>
-        <input type="text" id="batchTutor" class="form-control" formControlName="batchTutor">
-      </div>
-  
-      <div formArrayName="enrollments">
-        <div *ngFor="let enrollment of enrollments.controls; let i=index" [formGroupName]="i" class="form-group">
-          <h5>Enrollment {{ i + 1 }}</h5>
-          <label for="employeeId">Employee ID:</label>
-          <input type="number" id="employeeId" class="form-control" formControlName="employeeId">
-  
-          <label for="status">Status:</label>
-          <input type="number" id="status" class="form-control" formControlName="status">
-  
-          <button type="button" class="btn btn-danger mt-2" (click)="removeEnrollment(i)">Remove Enrollment</button>
+      <div class="col-md-6">
+        <h2 class="text-white">Enroll Employee</h2>
+        <div class="form-group">
+          <label for="batchSelect" class="text-white"> Select Batch: </label>
+          <input type="text" class="form-control" id="batchSelect" [(ngModel)]="selectedBatchId" name="selectedBatchId" required>
         </div>
+        <div class="form-group">
+          <label for="employeeId" class="text-white"> Employee ID: </label>
+          <input type="text" class="form-control" id="employeeId" [(ngModel)]="selectedEmployeeId" name="selectedEmployeeId" required>
+        </div>
+        <button class="btn btn-success" (click)="enrollEmployee(selectedBatchId, selectedEmployeeId)">Enroll</button>
       </div>
-  
-      <button type="button" class="btn btn-secondary mt-3" (click)="addEnrollment()">Add Enrollment</button>
-      <button type="submit" class="btn btn-primary mt-3">Submit</button>
-    </form>
-  <div>
-
-    
-      <li *ngFor="let batch of batches" class="list-group-item">
-        <h5>{{ batch.batchName }}</h5>
-        <p>Course ID: {{ batch.courseId }}</p>
-        <p>Batch Tutor: {{ batch.batchTutor }}</p>
-        <button class="btn btn-info" (click)="editBatch(batch)">Edit</button>
-        <button class="btn btn-danger" (click)="deleteBatch(batch)">Delete</button>
-      </li>
-
+    </div>
   </div>
+  

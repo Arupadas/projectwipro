@@ -1,97 +1,105 @@
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: #f9f9f9;
+/* Global styles */
+body {
+    background-color: #333; /* Dark gray background */
+    font-family: Arial, sans-serif;
   }
   
-  h2 {
+  /* Container styles */
+  .container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #444; /* Dark gray background for container */
+    border: 1px solid #555;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    color: white;
+  }
+  
+  /* Row styles */
+  .row {
     margin-bottom: 20px;
   }
   
-  .form-group {
-    margin-bottom: 15px;
+  /* Column styles */
+  .col-md-6 {
+    padding: 20px;
   }
   
-  .form-group label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-  
-  .form-group input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .btn {
-    padding: 10px 15px;
-    border-radius: 4px;
-    margin-right: 5px;
-  }
-  
-  .btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
-    color: white;
-  }
-  
-  .btn-secondary {
-    background-color: #6c757d;
-    border-color: #6c757d;
-    color: white;
-  }
-  
-  .btn-danger {
-    background-color: #dc3545;
-    border-color: #dc3545;
-    color: white;
-  }
-  
-  .mt-2 {
-    margin-top: 10px;
-  }
-  
-  .mt-3 {
-    margin-top: 20px;
-  }
-  
-  .mt-4 {
-    margin-top: 30px;
-  }
-  
-  .mt-5 {
-    margin-top: 40px;
-  }
-  
-  .list-group-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+  /* Header styles */
+  h1, h2 {
+    color: #fff; /* White text for headers */
     margin-bottom: 10px;
-    background-color: #fff;
   }
   
-  .list-group-item h5 {
-    margin: 0;
-    font-size: 1.2em;
+  h1 {
+    font-size: 24px;
   }
   
-  .list-group-item p {
-    margin: 5px 0;
+  h2 {
+    font-size: 18px;
   }
   
-  .list-group-item .btn {
-    margin-left: 10px;
+  /* Form styles */
+  form {
+    background-color: #444; /* Dark gray background for form */
+    padding: 20px;
+    border: 1px solid white;
+    border-radius: 10px;
+    color:white;
   }
-
+  
+  /* Input field styles */
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-control {
+    background-color: #555; /* Dark gray background for input fields */
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 10px;
+    color: #fff; /* White text */
+  }
+  
+  /* Button styles */
+  .btn {
+    background-color: #34C759; /* Green background for buttons */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    color: #fff; /* White text */
+    cursor: pointer;
+    
+    
+  }
+  .button-container {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px; /* Adjust the gap as needed */
+  }
+  
+  .create-btn,
+  .edit-btn,
+  .delete-btn {
+    margin-right: 10px; /* Adjust the right margin as needed */
+  }
   
   
+  .btn:hover {
+    background-color: #2ECC40; /* Lighter green background on hover */
+  }
   
+  /* Enroll button styles */
+  .enroll-btn {
+    background-color: #8BC34A; /* Yellow-green background for enroll button */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    color: #fff; /* White text */
+    cursor: pointer;
+  }
+  
+  .enroll-btn:hover {
+    background-color: #64DD17; /* Lighter yellow-green background on hover */
+  }
