@@ -1,70 +1,69 @@
 import { Component } from '@angular/core';
-
-interface DailyTask {
-  id: number;
-  day: string;
-  taskDescription: string;
-  courseCalendarId: number;
-}
-
-interface CourseCalendar {
-  id: number;
-  courseId: number;
-  startDate: string;
-  endTime: string;
-  dailyTasks: DailyTask[];
-}
-
-interface Course {
-  courseName: string;
-  courseDescription: string;
-  duration: number;
-  courseCalendar: CourseCalendar;
-}
+import { CourseService } from '../Services/course.service';
+import { Course  , CourseWithId} from '../Models/course.model';
 
 @Component({
   selector: 'app-course-management',
   templateUrl: './course-management.component.html',
-  styleUrls: ['./course-management.component.css'],
+  styleUrls: ['./course-management.component.css']
 })
 export class CourseManagementComponent {
-  showForm: boolean = false;
-
-  course: Course = {
+  showAddCourseForm = false;
+  showUpdateCourseForm = false;
+  constructor(private courseService: CourseService) { }
+  course = {
     courseName: '',
     courseDescription: '',
-    duration: 0,
-    courseCalendar: {
-      id: 0,
-      courseId: 0,
-      startDate: '',
-      endTime: '',
-      dailyTasks: [
-        {
-          id: 0,
-          day: '',
-          taskDescription: '',
-          courseCalendarId: 0,
-        },
-      ],
-    },
+    duration: 0
+  };
+  courseUpdate = {
+    Id :0,
+    courseName: '',
+    courseDescription: '',
+    duration: 0
   };
 
-  addTask() {
-    this.course.courseCalendar.dailyTasks.push({
-      id: 0,
-      day: '',
-      taskDescription: '',
-      courseCalendarId: 0,
-    });
+  toggleAddCourseForm() {
+    this.showAddCourseForm = !this.showAddCourseForm;
+  }
+  toggleUpdateCourseForm() {
+    this.showUpdateCourseForm = !this.showUpdateCourseForm;
   }
 
-  removeTask(index: number) {
-    this.course.courseCalendar.dailyTasks.splice(index, 1);
+  addCourse() {
+    this.courseService.addCourse(this.course).subscribe(
+      response => {
+        this.showAddCourseForm = !this.showAddCourseForm;
+        console.log('Course added successfully:', response);
+        // Optionally reset form or handle success
+      },
+      error => {
+        console.error('Error adding course:', error);
+        // Handle error appropriately
+      }
+    );
   }
 
-  onSubmit() {
-    console.log('Course created:', this.course);
-    // Add your form submission logic here
+  updateCourse() {
+    this.courseService.updateCourse(this.courseUpdate).subscribe(
+      response => {
+        console.log('Course updated successfully:', response);
+        this.showUpdateCourseForm = !this.showUpdateCourseForm;
+ // Optionally refresh data or close form after success
+      },
+      error => {
+        console.error('Error updating course:', error);
+        // Handle error appropriately
+      }
+    );
+  }
+
+
+  resetForm() {
+    this.course = {
+      courseName: '',
+      courseDescription: '',
+      duration: 0
+    };
   }
 }

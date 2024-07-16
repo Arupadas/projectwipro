@@ -1,93 +1,67 @@
-<div class="course-management">
-    <button (click)="showForm = true">Create Course</button>
-    
-    <div *ngIf="showForm">
-      <h2>Create Course</h2>
-      <form (ngSubmit)="onSubmit()" #courseForm="ngForm">
-        <div class="form-group">
-          <label for="courseName">Course Name:</label>
-          <input
-            type="text"
-            id="courseName"
-            name="courseName"
-            [(ngModel)]="course.courseName"
-            required
-          />
-        </div>
-  
-        <div class="form-group">
-          <label for="courseDescription">Course Description:</label>
-          <textarea
-            id="courseDescription"
-            name="courseDescription"
-            [(ngModel)]="course.courseDescription"
-            required
-          ></textarea>
-        </div>
-  
-        <div class="form-group">
-          <label for="duration">Duration (days):</label>
-          <input
-            type="number"
-            id="duration"
-            name="duration"
-            [(ngModel)]="course.duration"
-            required
-          />
-        </div>
-  
-        <div class="form-group">
-          <label for="startDate">Start Date:</label>
-          <input
-            type="datetime-local"
-            id="startDate"
-            name="startDate"
-            [(ngModel)]="course.courseCalendar.startDate"
-            required
-          />
-        </div>
-  
-        <div class="form-group">
-          <label for="endTime">End Date:</label>
-          <input
-            type="datetime-local"
-            id="endTime"
-            name="endTime"
-            [(ngModel)]="course.courseCalendar.endTime"
-            required
-          />
-        </div>
-  
-        <div class="daily-tasks">
-          <h3>Daily Tasks</h3>
-          <div
-            *ngFor="let task of course.courseCalendar.dailyTasks; let i = index"
-            class="task"
-          >
-            <label for="taskDay-{{ i }}">Day:</label>
-            <input
-              type="date"
-              id="taskDay-{{ i }}"
-              name="taskDay-{{ i }}"
-              [(ngModel)]="task.day"
-              required
-            />
-  
-            <label for="taskDescription-{{ i }}">Task Description:</label>
-            <input
-              type="text"
-              id="taskDescription-{{ i }}"
-              name="taskDescription-{{ i }}"
-              [(ngModel)]="task.taskDescription"
-              required
-            />
-  
-            <button type="button" (click)="removeTask(i)">Remove Task</button>
-          </div>
-          <button type="button" (click)="addTask()">Add Task</button>
-        </div>
-  
-        <button type="submit">Create Course</button>
-      </form>
+<section>
+<div class="d-flex justify-content-center">
+  <button type="button" class="btn btn-primary" (click)="toggleAddCourseForm()" style="width: 30%;">
+    Add Course
+  </button>
+</div>
+
+<!-- Add Course Form -->
+<div *ngIf="showAddCourseForm" class="mt-8 d-flex justify-content-center">
+  <form (ngSubmit)="addCourse()" style="width: 30%;">
+    <div class="form-group">
+      <label for="courseName">Course Name</label>
+      <input type="text" class="form-control" id="courseName" [(ngModel)]="course.courseName" name="courseName" required>
     </div>
-  </div> 
+    <div class="form-group">
+      <label for="courseDescription">Course Description</label>
+      <textarea class="form-control" id="courseDescription" [(ngModel)]="course.courseDescription" name="courseDescription" required></textarea>
+    </div>
+    <div class="form-group">
+      <label for="duration">Duration (hours)</label>
+      <input type="number" class="form-control" id="duration" [(ngModel)]="course.duration" name="duration" required>
+    </div>
+    <div class="d-flex justify-content-center">
+      <button type="submit" class="btn btn-success mt-2">Save Course</button>
+      <button type="button" class="btn btn-secondary mt-2 ml-2" (click)="toggleAddCourseForm()">Cancel</button>
+    </div>
+  </form>
+</div>
+</section>
+<section>
+  <div class="d-flex justify-content-center">
+    <button type="button" class="btn btn-primary" (click)="toggleUpdateCourseForm()" style="width: 30%;">
+      Edit Course
+    </button>
+  </div>
+  <div *ngIf="showUpdateCourseForm" class="mt-8 d-flex justify-content-center">
+    <form (ngSubmit)="updateCourse()" style="width: 30%;">
+      <div class="form-group">
+        <label for="courseId">Course Id</label>
+        <input type="number" class="form-control" id="courseId" [(ngModel)]="courseUpdate.Id" name="courseName" required>
+      </div>
+      <div class="form-group">
+        <label for="courseName">Course Name</label>
+        <input type="text" class="form-control" id="courseName" [(ngModel)]="courseUpdate.courseName" name="courseName" required>
+      </div>
+      <div class="form-group">
+        <label for="courseDescription">Course Description</label>
+        <textarea class="form-control" id="courseDescription" [(ngModel)]="courseUpdate.courseDescription" name="courseDescription" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="duration">Duration (hours)</label>
+        <input type="number" class="form-control" id="duration" [(ngModel)]="courseUpdate.duration" name="duration" required>
+      </div>
+      <div class="d-flex justify-content-center">
+        <button type="submit" class="btn btn-success mt-2">Save Course</button>
+        <button type="button" class="btn btn-secondary mt-2 ml-2" (click)="toggleUpdateCourseForm()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</section>
+<section>
+  <div class="d-flex justify-content-center">
+    <button type="button" class="btn btn-primary" (click)="toggleAddCourseForm()" style="width: 30%;">
+      Add Course Calendar
+    </button>
+  </div>
+</section>  

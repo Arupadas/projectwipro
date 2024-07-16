@@ -1,31 +1,27 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+//import  jwt_decode from 'jwt-decode';
+import {jwtDecode} from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private isAuthenticated = false;
-  private role: string = '';
+  private apiUrl = 'http://localhost:5276/api/Login'; // Replace with your backend API URL
 
-  login(username: string, password: string): boolean {
-    // Logic to authenticate user based on username and password
-    // Example logic, replace with actual implementation
-    if (username === 'admin' && password === 'admin') {
-      this.isAuthenticated = true;
-      this.role = 'Administrator';
-    } else if (username === 'manager' && password === 'manager') {
-      this.isAuthenticated = true;
-      this.role = 'Manager';
-    } else if (username === 'employee' && password === 'employee') {
-      this.isAuthenticated = true;
-      this.role = 'Employee';
-    } else {
-      this.isAuthenticated = false;
-    }
-    return this.isAuthenticated;
+  constructor(private http: HttpClient) { }
+
+  login(credentials: any): Observable<any> {
+    return this.http.post<any>(this.apiUrl, credentials);
   }
 
-  getRole(): string {
-    return this.role;
+  decodeToken(token: string): any {
+    try {
+      return jwtDecode(token);
+    } catch (Error) {
+      console.error('Error decoding token', Error);
+      return null;
+    }
   }
 }
