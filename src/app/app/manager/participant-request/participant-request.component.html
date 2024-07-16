@@ -1,0 +1,8 @@
+<h2>Participant Requiests</h2>
+<ul>
+    <li *ngFor="let request of requests">
+        {{ request.name }}
+        <button (click)="acceptRequest(request)">Accept</button>
+        <button (click)="rejectRequest(request)">Reject</button>
+    </li>
+</ul>
