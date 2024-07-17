@@ -1,0 +1,66 @@
+<!-- src/app/components/course/course.component.html -->
+<section>
+    <div class="course-container">
+      <div class="course-card" *ngFor="let course of courses">
+        <mat-card class="course-mat-card">
+          <mat-card-header>
+            <mat-card-title>{{ course.courseName }}</mat-card-title>
+            <mat-card-subtitle>Duration: {{ course.duration }} days</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p>{{ course.courseDescription }}</p>
+            <mat-form-field appearance="fill">
+              <mat-label>Select Course Calendar</mat-label>
+              <mat-select (selectionChange)="onCalendarChange(course.id, $event.value)">
+                <mat-option *ngFor="let calendar of course.courseCalendars" [value]="calendar.id">
+                  {{ calendar.startDate | date }} - {{ calendar.endTime | date }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <ng-container *ngIf="openCourseId === course.id">
+              <full-calendar [options]="calendarOptions"></full-calendar>
+              <button mat-button (click)="closeCalendar()">Close Calendar</button>
+            </ng-container>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="batch-grid">
+      <mat-card *ngFor="let batch of batches" class="batch-card batch-mat-card" [ngStyle]="{'background-image': 'url(' + batch.imageUrl + ')'}">
+        <mat-card-header>
+          <div mat-card-avatar class="batch-avatar">
+            {{ batch.batchName.charAt(0) }}
+          </div>
+          <mat-card-title>{{ batch.batchName }}</mat-card-title>
+          <mat-card-subtitle>
+            <mat-icon>person</mat-icon> 
+            <span>{{ batch.batchTutor }}</span>
+          </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content class="batch-mat-content">
+          <h3>
+            <mat-icon>group</mat-icon>
+            <span>Enrollments</span>
+          </h3>
+          <mat-divider></mat-divider>
+          <ul class="enrollment-list">
+            <li *ngFor="let enrollment of batch.enrollments" class="enrollment-item">
+              <div class="enrollment-info">
+                <mat-icon>person_outline</mat-icon>
+                <span class="employee-id">ID: {{ enrollment.employeeId }}</span>
+              </div>
+              <div class="enrollment-status" [ngClass]="enrollment.status.toLowerCase()">
+                {{ enrollment.status }}
+              </div>
+            </li>
+          </ul>
+        </mat-card-content>
+        <mat-card-actions align="end">
+          <button mat-button color="primary">View Details</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </section>
+  

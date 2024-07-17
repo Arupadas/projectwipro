@@ -28,5 +28,8 @@ export class CourseService {
     return this.http.put<any>(`${this.apiUrl}/api/CourseCalendar/${courseCalendar.Id}`, courseCalendar);
   }
 
+
+  
+
   // Add more methods as needed (editCourse, deleteCourse, etc.)
 }

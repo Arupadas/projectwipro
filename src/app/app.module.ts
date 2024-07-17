@@ -15,8 +15,24 @@ import { BatchManagementComponent } from './batch-management/batch-management.co
 import { UserManagementComponent } from './user-management/user-management.component';
 import { ReportComponent } from './report/report.component';
 import { CourseManagementComponent } from './course-management/course-management.component';
+import { FullCalendarModule } from '@fullcalendar/angular'; // for FullCalendar
+import { CourseCalendarComponent } from './course-calendar/course-calendar.component';
+import { ViewReportComponent } from './view-report/view-report.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { CourseComponent } from './course-component/course-component.component';
+import { CourseService } from './Services/courseview.service';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import interactionPlugin from '@fullcalendar/interaction';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field'; // Import MatFormFieldModule
+import { MatSelectModule } from '@angular/material/select'; // Import MatSelectModule
+import { MatListModule } from '@angular/material/list';
+import {MatIconModule} from '@angular/material/icon'
+import { MatDivider } from '@angular/material/divider';
+
+
+
+
 
 
 @NgModule({
@@ -29,7 +45,11 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     BatchManagementComponent,
     UserManagementComponent,
     ReportComponent,
-    CourseManagementComponent
+    CourseManagementComponent,
+    CourseCalendarComponent,
+    ViewReportComponent,
+    CourseComponent ,
+   
   ],
   imports: [
     BrowserModule,
@@ -37,12 +57,19 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule  ,
-    MatSlideToggleModule,
+    FullCalendarModule ,
+    MatCardModule,
+    MatSelectModule ,
+    MatFormFieldModule,
+    MatListModule,
+    MatDivider ,
+    MatIconModule
   
   ],
   providers: [
     AuthService,
     provideAnimationsAsync(),
+    CourseService
   
   ],
   bootstrap: [AppComponent]

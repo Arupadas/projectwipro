@@ -1,0 +1,85 @@
+/* Reduce the font size of the calendar title and buttons */
+.fc-toolbar-title {
+    font-size: 1em; /* Adjust this as needed */
+  }
+
+  .fc .fc-col-header-cell-cushion {
+    display: inline-block;
+    padding: 2px 4px;
+  }
+  .fc-col-header-cell {
+    color: black;
+    background-color: #ff4500;
+  }
+  .fc-button {
+    font-size: 0.8em; /* Adjust this as needed */
+    padding: 0.25em 0.5em;
+  }
+  
+  /* Reduce the size of day numbers */
+  .fc-daygrid-day-number {
+    font-size: 0.8em; /* Adjust this as needed */
+
+  }
+  
+  /* Reduce the height of day cells */
+  .fc-daygrid-day {
+    height: 3em; /* Adjust this as needed */
+    color: black;
+  }
+  
+  /* Reduce the size of event blocks */
+  .fc-event {
+    font-size: 0.8em; /* Adjust this as needed */
+    padding: 0.2em;
+  }
+  
+  /* Optionally, adjust the height of the entire calendar */
+  .fc {
+    max-width: 40%; /* Keep it responsive */
+    margin: 0 auto; /* Center it */
+    color: black;
+    text-decoration: black;
+    border-color: black;
+  }
+  
+  .fc-scroller-harness, .fc-scroller-harness-liquid {
+    height: auto !important;
+    min-height: 300px; /* Adjust this as needed */
+  }
+  fc-daygrid-day {
+    background-color: #5a1947; /* Light blue background color */
+  }
+  
+  /* Change the text color of day numbers */
+  .fc-daygrid-day-number {
+    color: #ff4500; /* Orange text color */
+  }
+  
+  /* Optionally, customize the hover effect for day cells */
+  
+
+  @media (max-width: 768px) {
+    .fc-toolbar-title {
+      font-size: 0.9em;
+    }
+  
+    .fc-button {
+      font-size: 0.7em;
+      padding: 0.2em 0.4em;
+    }
+  
+    .fc-daygrid-day-number {
+      font-size: 0.7em;
+    }
+  
+    .fc-daygrid-day {
+      height: 2.5em;
+    }
+  
+    .fc-event {
+      font-size: 0.7em;
+      padding: 0.15em;
+    }
+  }
+  
