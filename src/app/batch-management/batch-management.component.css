@@ -64,7 +64,7 @@ body {
   
   /* Button styles */
   .btn {
-    background-color: #34C759; /* Green background for buttons */
+    background-color: #2ECC40; /* Green background for buttons */
     border: none;
     border-radius: 5px;
     padding: 10px 20px;
@@ -84,7 +84,13 @@ body {
   .delete-btn {
     margin-right: 10px; /* Adjust the right margin as needed */
   }
-  
+  .enroll-section {
+    margin-top: 13%; /* Adjust margin top as needed */
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #444 ;
+    color: white;
+  } 
   
   .btn:hover {
     background-color: #2ECC40; /* Lighter green background on hover */
@@ -92,7 +98,7 @@ body {
   
   /* Enroll button styles */
   .enroll-btn {
-    background-color: #8BC34A; /* Yellow-green background for enroll button */
+    background-color: #2ECC40; /* Yellow-green background for enroll button */
     border: none;
     border-radius: 5px;
     padding: 10px 20px;
@@ -101,5 +107,21 @@ body {
   }
   
   .enroll-btn:hover {
-    background-color: #64DD17; /* Lighter yellow-green background on hover */
+    background-color: #2ECC40; /* Lighter yellow-green background on hover */
   }
+  .batch-form,
+  .enroll-form {
+    border: 1px solid #ccc;
+    padding: 20px;
+    background-color: #f9f9f9;
+  }
+  .batch-form .form-group,
+.enroll-form .form-group {
+  margin-bottom: 15px;
+}
+.batch-form {
+  border: 1px solid #ccc;
+  padding: 20px;
+  background-color: #444;
+  border-radius: 5px; /* Rounded corners */
+}
