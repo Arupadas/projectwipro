@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { EmployeeComponent } from './employee/employee.component';
 
 import { AppRoutingModule } from './app-routing.module'; // Import AppRoutingModule
 import { AppComponent } from './app.component';
@@ -25,6 +25,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     LoginComponent,
     AdminComponent,
     ManagerComponent,
+    EmployeeComponent,
 
     BatchManagementComponent,
     UserManagementComponent,

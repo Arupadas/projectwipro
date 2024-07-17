@@ -1,0 +1,46 @@
+<!-- src/app/employee/employee.component.html -->
+
+<div class="employee-container">
+    <div class="employee-header">
+      <h2>Employee Dashboard</h2>
+    </div>
+  
+    <div class="employee-actions">
+      <button (click)="viewBatches()">View Available Batches</button>
+      <button (click)="viewCourseCalendar()">View Course Calendar</button>
+      <button (click)="requestEnrollment()">Request Enrollment</button>
+      <button class="feedback-button" (click)="toggleFeedbackForm()">Record Feedback</button>
+    </div>
+  
+    <table *ngIf="showBatches" class="employee-table">
+      <thead>
+        <tr>
+          <th>Batch ID</th>
+          <th>Course Name</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let batch of batches">
+          <td>{{ batch.id }}</td>
+          <td>{{ batch.courseName }}</td>
+          <td>{{ batch.startDate | date }}</td>
+          <td>{{ batch.endDate | date }}</td>
+          <td><button (click)="enrollInBatch(batch.id)">Enroll</button></td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <div *ngIf="showCourseCalendar">
+      <!-- Course calendar content here -->
+      <p>Course Calendar will be displayed here...</p>
+    </div>
+  
+    <div *ngIf="showFeedbackForm" class="feedback-form">
+      <textarea [(ngModel)]="feedback" placeholder="Enter your feedback"></textarea>
+      <button (click)="submitFeedback()">Submit Feedback</button>
+    </div>
+  </div>
+  

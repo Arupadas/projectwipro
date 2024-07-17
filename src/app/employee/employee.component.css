@@ -1,0 +1,109 @@
+/* src/app/employee/employee.component.css */
+
+/* Container Styles */
+.employee-container {
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 800px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Header Styles */
+  .employee-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .employee-header h2 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  /* Button Styles */
+  .employee-actions {
+    text-align: center;
+    margin: 20px 0;
+  }
+  
+  .employee-actions button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 5px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .employee-actions button:hover {
+    background-color: #45a049;
+  }
+  
+  .employee-actions .feedback-button {
+    background-color: #2196F3;
+  }
+  
+  .employee-actions .feedback-button:hover {
+    background-color: #1976D2;
+  }
+  
+  /* Table Styles */
+  .employee-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .employee-table th,
+  .employee-table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .employee-table th {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .employee-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .employee-table tr:hover {
+    background-color: #ddd;
+  }
+  
+  /* Feedback Form Styles */
+  .feedback-form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+  }
+  
+  .feedback-form textarea {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    resize: vertical;
+    font-size: 16px;
+    min-height: 100px;
+  }
+  
+  .feedback-form button {
+    align-self: flex-end;
+    margin-top: 10px;
+    background-color: #4CAF50;
+  }
+  
+  .feedback-form button:hover {
+    background-color: #45a049;
+  }
+  
