@@ -1,4 +1,7 @@
 /* Container for each section */
+.container{
+  background-color: #444;
+}
 section {
   margin-bottom: 20px; /* Adjust spacing between sections */
 }
