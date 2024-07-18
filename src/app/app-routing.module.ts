@@ -12,6 +12,7 @@ import { CourseManagementComponent } from './course-management/course-management
 import { BatchManagementComponent } from './batch-management/batch-management.component';
 import { BatchesComponent } from './app/manager/batches/batches.component';
 import { ParticipantRequestComponent } from './app/manager/participant-request/participant-request.component';
+import { UserManagementComponent } from './user-management/user-management.component';
 
 
 
@@ -28,6 +29,8 @@ const routes: Routes = [
   { path: 'calendar', component: CourseCalendarComponent},
   { path: 'course-management', component: CourseManagementComponent},
   {path : 'batch-management' , component :BatchManagementComponent} ,
+  {path : 'user-management' , component :UserManagementComponent} ,
+
 
 
   { path: "", redirectTo: "Home", pathMatch: "full" },
