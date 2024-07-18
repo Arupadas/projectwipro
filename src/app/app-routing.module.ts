@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'course', component: CourseComponent },
   { path: 'admin', component: AdminComponent },
   { path: 'manager', component: ManagerComponent},
-  { path: 'employee', component: EmployeeComponent},
+  { path: 'employee-dashboard', component: EmployeeComponent},
   { path: 'calendar', component: CourseCalendarComponent},
   { path: 'course-management', component: CourseManagementComponent},
   {path : 'batch-management' , component :BatchManagementComponent} ,
