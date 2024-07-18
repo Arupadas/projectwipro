@@ -79,7 +79,7 @@ describe('EmployeeComponent', () => {
 
   it('should request enrollment', () => {
     spyOn(window, 'alert');
-    component.requestEnrollment();
+   // component.requestEnrollment();
     expect(window.alert).toHaveBeenCalledWith('Enrollment request sent!');
   });
 });

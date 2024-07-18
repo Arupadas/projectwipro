@@ -33,8 +33,13 @@ export class UserManagementComponent implements OnInit {
 
   toggleAddUserForm() {
     this.showAddUserForm = !this.showAddUserForm;
-    this.showUserList = !this.showAddUserForm;
+    this.showUserList = false;
     this.selectedUser = null;
+  }
+  toggleViewUserForm() {
+    this.showAddUserForm = false;
+    this.showUserList = true;
+    //this.selectedUser = null;
   }
 
   createUser() {

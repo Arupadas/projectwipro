@@ -27,6 +27,7 @@ export class EmployeeComponent implements OnInit {
   enrolledCourses: number = 0;
   batches: any[] = [];
   employeeId: string | null = null;
+  enrollmentStatus: { [key: number]: EnrollmentStatus } = {};
 
   calendarOptions: CalendarOptions = {
     plugins: [dayGridPlugin, interactionPlugin],
@@ -47,11 +48,11 @@ export class EmployeeComponent implements OnInit {
     this.loadBatches();
     this.employeeId = this.getEmployeeIdFromToken();
   }
-
   loadBatches() {
     this.batchService.getBatches().subscribe(
       (data: any[]) => {
         this.batches = data;
+        this.checkEnrollmentStatuses(); // Check statuses for all batches after loading
       },
       error => {
         console.error('Error fetching batches', error);
@@ -101,6 +102,7 @@ export class EmployeeComponent implements OnInit {
         () => {
           alert(`Enrollment requested for batch ID: ${batchId}`);
           this.enrolledCourses++;
+          this.checkEnrollmentStatus(batchId); // Check status after enrollment
         },
         error => {
           console.error('Error enrolling in batch', error);
@@ -108,6 +110,28 @@ export class EmployeeComponent implements OnInit {
       );
     } else {
       console.error('Employee ID not found');
+    }
+  }
+
+
+  checkEnrollmentStatus(batchId: number) {
+    if (this.employeeId) {
+      this.batchService.getEnrollmentStatus(batchId, parseInt(this.employeeId, 10)).subscribe(
+        (data: BatchEnrollment) => {
+          this.enrollmentStatus[batchId] = data.status;
+        },
+        error => {
+          console.error('Error fetching enrollment status', error);
+        }
+      );
+    }
+  }
+
+  checkEnrollmentStatuses() {
+    if (this.employeeId) {
+      this.batches.forEach(batch => {
+        this.checkEnrollmentStatus(batch.id);
+      });
     }
   }
 

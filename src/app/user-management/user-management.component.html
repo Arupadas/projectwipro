@@ -1,13 +1,23 @@
 <div class="container">
   <aside>
     <p>User Management</p>
+    <p>Batch Management</p>
     <button (click)="toggleAddUserForm()">
       <i class="fa fa-user-o" aria-hidden="true"></i>
-      {{ showAddUserForm ? 'View Users' : 'Add User' }}
+      Add User
     </button>
+    <button (click)="toggleViewUserForm()">
+      <i class="fa fa-user-o" aria-hidden="true"></i>
+      View User
+    </button>
+
+    <!-- <button (click)="toggleAddUserForm()">
+      <i class="fa fa-user-o" aria-hidden="true"></i>
+      {{ showAddUserForm ? 'View Users' : 'Add User' }}
+    </button> -->
   </aside>
 
-  <div class="main-content">
+  <div  class="main-content">
     <div class="user-grid" *ngIf="showUserList">
       <div class="user-card" *ngFor="let user of userList">
         <div class="user-avatar">

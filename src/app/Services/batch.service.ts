@@ -12,7 +12,7 @@ export class BatchService {
   constructor(private http: HttpClient) {}
 
   createBatch(batch: Batch): Observable<Batch> {
-    return this.http.post<Batch>(`${this.apiUrl}/api/Batch`, batch, this.httpOptions());
+    return this.http.post<Batch>(`${this.apiUrl}/Batch`, batch, this.httpOptions());
   }
 
   updateBatch(id: number, batch: Batch): Observable<Batch> {
@@ -31,6 +31,11 @@ export class BatchService {
 
   enrollEmployee(enrollment: BatchEnrollment): Observable<BatchEnrollment> {
     return this.http.post<BatchEnrollment>(`${this.apiUrl}/BatchEnrollment`, enrollment, this.httpOptions());
+
+  }
+
+  getEnrollmentStatus(batchId: number, employeeId: number): Observable<BatchEnrollment> {
+    return this.http.get<BatchEnrollment>(`${this.apiUrl}/BatchEnrollment/${batchId}/${employeeId}`);
   }
 
   private httpOptions() {

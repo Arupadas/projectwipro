@@ -35,7 +35,7 @@
                             <tr>
                                 <th>Batch ID</th>
                                 <th>Batch Name</th>
-                                <th>Course Name</th>
+                                <th>Course CalenderId</th>
                                 <th>Tutor</th>
                                 <th>Actions</th>
                             </tr>
@@ -48,7 +48,7 @@
                                 <td>
                                     <img src="https://img.icons8.com/ios-filled/50/000000/teacher.png" alt="Tutor Icon" class="tutor-icon"> {{ batch.batchTutor }}
                                 </td>
-                                <td><button class="btn btn-primary" (click)="enrollInBatch(batch.id)">Enroll</button></td>
+                                <td><button class="btn btn-primary" (click)="enrollInBatch(batch.id)">{{ enrollmentStatus[batch.id] || 'Not Enrolled' }}</button></td>
                             </tr>
                         </tbody>
                     </table>
