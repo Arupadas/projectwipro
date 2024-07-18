@@ -1,29 +1,41 @@
 body {
     background-color: #f8f9fa;
 }
-
+.page-title {
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 36px;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    width: auto;
+    padding: 20px;
+    box-sizing: border-box;
+    border: 1px solid #e1e4e8;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-image: linear-gradient(30deg , #0ea5c0, #44a7fd);
+    height: 100px;
+    font-family: cursive;
+    margin-top: 0px;
+    
+}
+.page-title p {
+    padding-top: -60px;
+}
 .manager-container {
     background-color: #ffffff;
-    padding: 50px 0;
 }
 
 .manager-heading {
     text-align: center;
     margin-bottom: 30px;
-    background-color: #e9ecef;
-    color: #343a40;
-    padding: 8px;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .manager-heading .material-icons {
     font-size: 3rem;
     vertical-align: middle;
-    color: #343a40;
+    color: #1b1b1c;
 }
 
 .manager-heading h2 {
@@ -34,7 +46,9 @@ body {
 
 .material-icons {
     font-size: 3rem;
-    color: #343a40;
+    color: #191b1c;
+    align-items: center;
+    padding-top: 10px;
 }
 
 .text-center {
@@ -42,7 +56,7 @@ body {
 }
 
 .option-card {
-    background-color: #f8f9fa;
+    background-image: linear-gradient(30deg , #d4f9ff, #d9edff);
     color: #343a40;
     cursor: pointer;
     transition: transform 0.3s, box-shadow 0.3s;
@@ -54,13 +68,17 @@ body {
 }
 
 .card-title {
-    font-size: 1.5rem;
-    margin-top: 10px;
+  
+    color: var(--text-color);
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 20px;
+    font-weight: 600;
 }
 
 .btn-light {
     color: #ffffff;
-    background-color: #343a40;
+    background-color: #4f5e6e;
     border-color: #343a40;
     margin-top: 10px;
     font-size: 1rem;
