@@ -9,6 +9,8 @@ import { CourseComponent } from './course-component/course-component.component';
 import { CourseCalendarComponent } from './course-calendar/course-calendar.component';
 import { CourseManagementComponent } from './course-management/course-management.component';
 import { BatchManagementComponent } from './batch-management/batch-management.component';
+import { BatchesComponent } from './app/manager/batches/batches.component';
+import { ParticipantRequestComponent } from './app/manager/participant-request/participant-request.component';
 
 
 
@@ -17,8 +19,10 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'course', component: CourseComponent },
   { path: 'admin', component: AdminComponent },
-  { path: 'manager', component: ManagerComponent},
-  { path: 'employee-dashboard', component: EmployeeComponent},
+  { path:'manager-dashboard', loadChildren:()=> import('./app/manager/manager.module').then(m=>m.ManagerModule), data:{role:'Manager'}},
+  { path: 'batches', component: BatchesComponent },
+  { path: 'approval', component: ParticipantRequestComponent },
+  { path: 'employee', component: EmployeeComponent},
   { path: 'calendar', component: CourseCalendarComponent},
   { path: 'course-management', component: CourseManagementComponent},
   {path : 'batch-management' , component :BatchManagementComponent} ,

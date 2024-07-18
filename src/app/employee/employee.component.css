@@ -9,7 +9,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  color: #ffffff;
+  color: #333333; /* Dark grey for better readability */
 }
 
 /* Container */
@@ -24,7 +24,7 @@ body {
 
 /* Header */
 .employee-header {
-  color: #17a2b8; /* Change the text color to vibrant teal */
+  color: #17a2b8; /* Vibrant teal */
   margin-bottom: 20px;
 }
 
@@ -33,7 +33,7 @@ body {
   display: flex;
   align-items: center;
   background-color: #17a2b8; /* Vibrant teal */
-  color: #ffffff;
+  color: #f8f9fa; /* Light grey */
   border: none;
   margin-bottom: 10px;
   transition: background-color 0.3s, color 0.3s;
@@ -65,7 +65,7 @@ body {
 
 .table th {
   background-color: #17a2b8; /* Vibrant teal */
-  color: #ffffff;
+  color: #f8f9fa; /* Light grey */
 }
 
 .tutor-icon {
@@ -93,7 +93,7 @@ body {
   align-items: center;
   padding: 15px 20px;
   background-color: #17a2b8; /* Vibrant teal */
-  color: #ffffff;
+  color: #f8f9fa; /* Light grey */
   border: none;
   border-radius: 50px;
   cursor: pointer;
