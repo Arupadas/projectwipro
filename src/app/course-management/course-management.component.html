@@ -28,8 +28,11 @@
   </aside>
 
   <div class="main-content">
+  
     <div  *ngIf="showAddCourseForm || showUpdateCourseForm" class="form-container">
+      
       <form *ngIf="showAddCourseForm" (ngSubmit)="addCourse()">
+        <h3>Add Course</h3>
         <label for="courseName">Course Name:</label>
         <input id="courseName" [(ngModel)]="course.courseName" name="courseName" required>
 
@@ -43,6 +46,7 @@
       </form>
 
       <form *ngIf="showUpdateCourseForm" (ngSubmit)="updateCourse()">
+        <h3>Edit Course</h3>
         <label for="courseId">Course Id</label>
         <input type="number" class="form-control" id="courseId" [(ngModel)]="courseUpdate.Id" name="courseId" required>
         

@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-            background-color: #ffffff;
+            background-image: linear-gradient(30deg , #d4f9ff, #d9edff);
             margin: 0;
             padding: 0;
             display: flex;
@@ -19,6 +19,29 @@
         .login-container {
             width: 340px;
             padding: 20px;
+            box-sizing: border-box;
+            border: 1px solid #e1e4e8;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-image: linear-gradient(30deg , #a4bcc1, #ddebf7);
+            height: 400px;
+
+        }
+        .welcome-container {
+            width: 340px;
+            padding: 20px;
+            box-sizing: border-box;
+            border: 1px solid #e1e4e8;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(5, 209, 255, 0.1);
+            background-image: linear-gradient(30deg , #0ea5c0, #44a7fd);
+            height: 400px;
+            font-size: large;
+            font-family: cursive;
+            font-variant: normal;
+            text-shadow: #6e6e80;
+            padding-top: 100px;
+            text-align: center;
 
         }
         .login-container h2 {
@@ -57,6 +80,7 @@
             font-size: 16px;
             font-weight: 500;
             transition: background-color 0.3s ease;
+    
         }
         .login-container button:hover {
             background-color: #0e906f;
@@ -80,24 +104,47 @@
         .login-footer a:hover {
             text-decoration: underline;
         }
+        .company-title {
+            font-size: 24px;
+            color: #24292e;
+            margin-bottom: 20px;
+            font-family: cursive;
+          }
+          .submit-button {
+            background-image: linear-gradient(30deg , #14162e, #1f3446);
+            color: #24292e;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 20px; /* Adjust margin from top */
+          }
+          
+          .submit-button:hover {
+            background-color: #c6ccd1;
+          }
     </style>
 </head>
 <body>
+    <div class="welcome-container">
+        <h3>Welcome Back!</h3>
+        <span>"We're delighted to see you again. Please sign in to access your account and explore all that awaits."</span>
+    </div>
     <div class="login-container">
-        <h2>Welcome back</h2>
+      
+        <h2 class="company-title">ABC Company</h2>
         <form (ngSubmit)="onSubmit()">
-            <label for="username">Email address</label>
+            <label for="username" >Email address</label>
             <input type="email" id="username" name="username" [(ngModel)]="username" required placeholder="Enter your email">
         
             <label for="password">Password</label>
             <input type="password" id="password" name="password" [(ngModel)]="password" required placeholder="Enter your password">
         
-            <button type="submit">Continue</button>
+            <button type="submit" class="submit-button">Continue</button>
             <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
         </form>
-        <div class="login-footer">
-            <p>Don't have an account? <a href="#">Sign up</a></p>
-        </div>
+
     </div>
 </body>
 </html>

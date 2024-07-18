@@ -14,7 +14,7 @@ aside {
 }
 
 aside button {
-  font-size: 12px;
+  font-size: 15px;
   color: #fff;
   display: block;
   padding: 12px;
@@ -26,6 +26,7 @@ aside button {
   width: 100%;
   text-align: left;
   -webkit-tap-highlight-color: transparent;
+  font-family: cursive;
 }
 
 aside button:hover {
@@ -69,6 +70,8 @@ aside button:hover::before {
 aside p {
   margin: 0;
   padding: 40px 0;
+  font-size: 20px;
+  font-family: cursive;
 }
 
 body {
@@ -172,9 +175,20 @@ body {
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(201, 199, 199, 0.1);
-  width: 400px;
   margin-top: 80px;
   margin-left: 80px;
+  width: 400px;
+  padding: 20px;
+  box-sizing: border-box;
+  border: 1px solid #e1e4e8;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-image: linear-gradient(30deg , #a4bcc1, #ddebf7);
+  height: auto;
+  
+}
+.form-container h3{
+  text-align: center;
 }
 
 .form-container form {

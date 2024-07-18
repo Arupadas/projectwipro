@@ -1,6 +1,6 @@
 <div class="container">
   <aside>
-    <p>Course Management</p>
+    <p>Batch Management</p>
     <button (click)="toggleAddBatchForm()">
       <i class="fa fa-user-o" aria-hidden="true"></i>
       Add Batch
@@ -23,6 +23,7 @@
   <div class="main-content">
     <div  *ngIf="showAddBatchForm || showAddEnrollEmployeeForm" class="form-container">
       <form *ngIf="showAddBatchForm" (ngSubmit)="createBatch()">
+        <h3>Add Batch</h3>
         <label for="batchName">Batch Name:</label>
         <input id="batchName" [(ngModel)]="newBatch.batchName" name="batchName" required>
 
@@ -35,7 +36,10 @@
         <button type="submit">Add Batch</button>
       </form>
 
+      
+
       <form *ngIf="showAddEnrollEmployeeForm" (ngSubmit)="enrollEmployee()">
+        <h3>Enroll Employee</h3>
         <label for="selectedEmployeeId">Employee Id:</label>
         <input type="number" class="form-control" id="selectedEmployeeId" [(ngModel)]="selectedEmployeeId" name="selectedEmployeeId" required>
         
