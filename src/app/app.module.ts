@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EmployeeComponent } from './employee/employee.component';
+import { HomeComponent } from './home/home.component';
 
 import { AppRoutingModule } from './app-routing.module'; // Import AppRoutingModule
 import { AppComponent } from './app.component';
@@ -49,7 +50,7 @@ import { MbscModule } from '@mobiscroll/angular';
     AdminComponent,
     ManagerComponent,
     EmployeeComponent,
-
+    HomeComponent,
     BatchManagementComponent,
     UserManagementComponent,
     ReportComponent,
