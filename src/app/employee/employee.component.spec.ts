@@ -1,8 +1,8 @@
-// src/app/employee/employee.component.spec.ts
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { EmployeeComponent } from './employee.component';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
+import { FullCalendarModule } from '@fullcalendar/angular';
 
 describe('EmployeeComponent', () => {
   let component: EmployeeComponent;
@@ -11,7 +11,7 @@ describe('EmployeeComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ EmployeeComponent ],
-      imports: [ FormsModule ]
+      imports: [ FormsModule, FullCalendarModule ]
     })
     .compileComponents();
   });
@@ -32,26 +32,24 @@ describe('EmployeeComponent', () => {
   });
 
   it('should display buttons', () => {
-    const buttons = fixture.debugElement.queryAll(By.css('.employee-actions button'));
-    expect(buttons.length).toBe(4);
+    const buttons = fixture.debugElement.queryAll(By.css('.list-group-item'));
+    expect(buttons.length).toBe(2); // Update this to match the actual number of buttons you have
     expect(buttons[0].nativeElement.textContent).toContain('View Available Batches');
     expect(buttons[1].nativeElement.textContent).toContain('View Course Calendar');
-    expect(buttons[2].nativeElement.textContent).toContain('Request Enrollment');
-    expect(buttons[3].nativeElement.textContent).toContain('Record Feedback');
   });
 
   it('should toggle batches visibility', () => {
     component.viewBatches();
     fixture.detectChanges();
-    const table = fixture.debugElement.query(By.css('.employee-table'));
+    const table = fixture.debugElement.query(By.css('table'));
     expect(table).toBeTruthy();
   });
 
   it('should toggle course calendar visibility', () => {
     component.viewCourseCalendar();
     fixture.detectChanges();
-    const courseCalendar = fixture.debugElement.query(By.css('.employee-table'));
-    expect(courseCalendar).toBeFalsy();
+    const calendar = fixture.debugElement.query(By.css('full-calendar'));
+    expect(calendar).toBeTruthy();
   });
 
   it('should toggle feedback form visibility', () => {

@@ -1,109 +1,111 @@
-/* src/app/employee/employee.component.css */
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  background: url('https://images.unsplash.com/photo-1536859355448-76f92ebdc33d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDJ8fGJsdWV8ZW58MHx8fHwxNjgwNjc0NTA4&ixlib=rb-1.2.1&q=80&w=1080') no-repeat center center fixed;
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: #ffffff;
+}
 
-/* Container Styles */
-.employee-container {
-    margin: 0 auto;
-    padding: 20px;
-    max-width: 800px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Header Styles */
-  .employee-header {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .employee-header h2 {
-    margin: 0;
-    font-size: 24px;
-    color: #333;
-  }
-  
-  /* Button Styles */
-  .employee-actions {
-    text-align: center;
-    margin: 20px 0;
-  }
-  
-  .employee-actions button {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 10px 5px;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .employee-actions button:hover {
-    background-color: #45a049;
-  }
-  
-  .employee-actions .feedback-button {
-    background-color: #2196F3;
-  }
-  
-  .employee-actions .feedback-button:hover {
-    background-color: #1976D2;
-  }
-  
-  /* Table Styles */
-  .employee-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-  }
-  
-  .employee-table th,
-  .employee-table td {
-    padding: 12px;
-    border: 1px solid #ddd;
-    text-align: left;
-  }
-  
-  .employee-table th {
-    background-color: #4CAF50;
-    color: white;
-  }
-  
-  .employee-table tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
-  
-  .employee-table tr:hover {
-    background-color: #ddd;
-  }
-  
-  /* Feedback Form Styles */
-  .feedback-form {
-    display: flex;
-    flex-direction: column;
-    margin-top: 20px;
-  }
-  
-  .feedback-form textarea {
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    resize: vertical;
-    font-size: 16px;
-    min-height: 100px;
-  }
-  
-  .feedback-form button {
-    align-self: flex-end;
-    margin-top: 10px;
-    background-color: #4CAF50;
-  }
-  
-  .feedback-form button:hover {
-    background-color: #45a049;
-  }
-  
+/* Container */
+.container {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  max-width: 1200px;
+  width: 100%;
+}
+
+/* Header */
+.employee-header {
+  color: #17a2b8; /* Change the text color to vibrant teal */
+  margin-bottom: 20px;
+}
+
+/* Sidebar */
+.list-group-item {
+  display: flex;
+  align-items: center;
+  background-color: #17a2b8; /* Vibrant teal */
+  color: #ffffff;
+  border: none;
+  margin-bottom: 10px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.list-group-item img.icon {
+  margin-right: 10px;
+}
+
+.list-group-item:hover {
+  background-color: #138496; /* Darker teal */
+}
+
+/* Dashboard Container */
+.dashboard-container {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Table */
+.table {
+  margin-top: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.table th {
+  background-color: #17a2b8; /* Vibrant teal */
+  color: #ffffff;
+}
+
+.tutor-icon {
+  margin-right: 10px;
+  vertical-align: middle;
+  width: 24px;
+  height: 24px;
+}
+
+.btn-primary {
+  background-color: #28a745;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #218838;
+}
+
+/* Click Me Button */
+.click-me-button {
+  position: fixed;
+  left: 10px;
+  bottom: 10px;
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: #17a2b8; /* Vibrant teal */
+  color: #ffffff;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.click-me-button:hover {
+  background-color: #138496; /* Darker teal */
+}
+
+.click-me-button .icon {
+  margin-right: 10px;
+  width: 24px;
+  height: 24px;
+}

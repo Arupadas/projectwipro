@@ -1,46 +1,64 @@
-<!-- src/app/employee/employee.component.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Dashboard</title>
+    <link rel="stylesheet" href="employee.component.css"> <!-- Link to your CSS file -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"> <!-- Bootstrap CSS -->
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="text-center mb-4 employee-header">Employee Dashboard</h2>
+            </div>
+        </div>
 
-<div class="employee-container">
-    <div class="employee-header">
-      <h2>Employee Dashboard</h2>
+        <div class="row dashboard-container">
+            <div class="col-md-3">
+                <div class="list-group">
+                    <a class="list-group-item list-group-item-action" (click)="viewBatches()">
+                        <img src="https://img.icons8.com/ios-filled/50/000000/open-box.png" alt="Batches Icon" class="icon"> View Available Batches
+                    </a>
+                    <a class="list-group-item list-group-item-action" (click)="viewCourseCalendar()">
+                        <img src="https://img.icons8.com/ios-filled/50/000000/calendar.png" alt="Calendar Icon" class="icon"> View Course Calendar
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-md-9">
+                <div *ngIf="showBatches">
+                    <table class="table table-striped table-hover">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Batch ID</th>
+                                <th>Batch Name</th>
+                                <th>Course ID</th>
+                                <th>Tutor</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let batch of batches">
+                                <td>{{ batch.id }}</td>
+                                <td>{{ batch.batchName }}</td>
+                                <td>{{ batch.courseId }}</td>
+                                <td>
+                                    <img src="https://img.icons8.com/ios-filled/50/000000/teacher.png" alt="Tutor Icon" class="tutor-icon"> {{ batch.batchTutor }}
+                                </td>
+                                <td><button class="btn btn-primary" (click)="enrollInBatch(batch.id)">Enroll</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div *ngIf="showCourseCalendar">
+                    <!-- Course calendar content here -->
+                    <full-calendar [options]="calendarOptions"></full-calendar>
+                </div>
+            </div>
+        </div>
     </div>
-  
-    <div class="employee-actions">
-      <button (click)="viewBatches()">View Available Batches</button>
-      <button (click)="viewCourseCalendar()">View Course Calendar</button>
-      <button (click)="requestEnrollment()">Request Enrollment</button>
-      <button class="feedback-button" (click)="toggleFeedbackForm()">Record Feedback</button>
-    </div>
-  
-    <table *ngIf="showBatches" class="employee-table">
-      <thead>
-        <tr>
-          <th>Batch ID</th>
-          <th>Course Name</th>
-          <th>Start Date</th>
-          <th>End Date</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let batch of batches">
-          <td>{{ batch.id }}</td>
-          <td>{{ batch.courseName }}</td>
-          <td>{{ batch.startDate | date }}</td>
-          <td>{{ batch.endDate | date }}</td>
-          <td><button (click)="enrollInBatch(batch.id)">Enroll</button></td>
-        </tr>
-      </tbody>
-    </table>
-  
-    <div *ngIf="showCourseCalendar">
-      <!-- Course calendar content here -->
-      <p>Course Calendar will be displayed here...</p>
-    </div>
-  
-    <div *ngIf="showFeedbackForm" class="feedback-form">
-      <textarea [(ngModel)]="feedback" placeholder="Enter your feedback"></textarea>
-      <button (click)="submitFeedback()">Submit Feedback</button>
-    </div>
-  </div>
-  
+</body>
+</html>
