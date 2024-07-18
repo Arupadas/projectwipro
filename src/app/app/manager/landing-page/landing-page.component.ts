@@ -11,9 +11,10 @@ constructor(private router: Router) {}
 
 navigateTo(option: string): void {
   if (option === 'batches') {
-    this.router.navigate(['/manager/batches']);
-  } else if (option === 'participant-requests'){
-    this.router.navigate(['/manager/participant-requests']);
+    this.router.navigate(['batches']);
+  } else if (option === 'approval'){
+    this.router.navigate(['approval']);
   }
+  //this.router.navigate(['/manager/{route}']);
 }
 }

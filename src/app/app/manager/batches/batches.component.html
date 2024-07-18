@@ -1,4 +1,69 @@
-<h2>Available Batches</h2>
-<ul>
-    <li *ngFor="let batch of batches">{{ batch.name}}</li>
-</ul>
+<div class="container mt-5">
+    <div class="available-batch-heading">
+
+<h2 class="mb-4 text-white">
+    <span class="material-icons md-36">groups</span>
+    Available Batches</h2>
+</div>
+<div class="mb-3 up">
+    <button class="btn btn-outline-light" (click)="goBack()">
+        <span class="material-icons">arrow_back</span>
+        Back to Manager DashBoard
+    </button>
+</div>
+<div *ngIf="batches.length>0; else noBatches" class="card mb-2 bg-dark text-white">
+    <div *ngFor="let batch of batches" class="card mb-2 bg-dark text-white">
+        <div class="card-header" (click)="toggleExpand( batch.id)" style="cursor:pointer;">
+             <div class="row">
+                <div class="col-md-3">
+                    <span class="material-icons md-24">fingerprint</span>
+                    <strong>ID:</strong>{{batch.id}}</div>
+                <div class="col-md-3">
+                    <span class="material-icons md-24">badge</span>
+                    <strong>Name:</strong>{{batch.batchName}}</div>
+                <div class="col-md-3">
+                    <span class="material-icons md-24">school</span>
+                    <strong>Course ID:</strong>{{batch.courseId}}</div>
+                <div class="col-md-3">
+                    <span class="material-icons md-24">person</span>
+                    <strong>Tutor:</strong>{{batch.batchTutor}}</div>
+             </div>
+            </div>
+        <div *ngIf="expandedBatchId===batch.id" class="collapse show">
+            <div class="card-body">
+                  <h5>Enrollments</h5>
+                  <ul>
+                    <li *ngFor="let enrollment of batch.enrollments">
+                        <div class="row">
+                            <div class="col-md-auto">
+                                <span class="material-icons md-24">account_circle</span>
+                                Batch ID:{{enrollment.batchId}}
+                            </div>
+                            <div class="col-md-auto">
+                                <span class="material-icons md-24">verified_user</span>
+                                Employee ID:{{enrollment.employeeId}}
+                            </div>
+                            <div class="col-md-auto">
+                                <span class="material-icons md-24">{{getStatusIcon(enrollment.status)}}</span>
+                                Status:{{enrollment.status}}
+                            </div>
+                        </div>
+                    </li>
+                  </ul>
+            </div>
+        </div>
+   </div>   
+</div>
+<ng-template #noBatches>
+    <div class="alert alert-info text-center">
+        No Batches Available
+    </div>
+</ng-template>
+
+<div class="mb-3 bottom">
+    <button class="btn btn-outline-light" (click)="goBack()">
+        <span class="material-icons">arrow_back</span>
+        Back to Manager DashBoard
+    </button>
+</div>
+</div>

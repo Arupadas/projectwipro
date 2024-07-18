@@ -17,7 +17,7 @@ import { UserManagementComponent } from './user-management/user-management.compo
 import { ReportComponent } from './report/report.component';
 import { CourseManagementComponent } from './course-management/course-management.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-//import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 //import { BatchesComponent } from './batches/batches.component';
 //import { CourseCalanderComponent } from './course-calander/course-calander.component';
 
@@ -43,7 +43,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule  ,
-    MatSlideToggleModule,
+   MatSlideToggleModule,
   
   ],
   providers: [

@@ -1,0 +1,85 @@
+body{
+ background-color: #343a40;
+}
+
+.manager-container{
+    background-color: #343a40;
+    padding: 50px 0;
+}
+.manager-heading{
+    text-align: center;
+    margin-bottom: 30px;
+    background-color:#212529;
+    color:#ffffff;
+    padding: 8px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.manager-heading .material-icons{
+    font-size: 3 rem;
+    vertical-align: middle;
+    color:#ffffff
+}
+
+.manager-heading h2{
+    font-size: 2.5rem;
+    margin: 0;
+    color: #ffffff;
+}
+
+.material-icons{
+    font-size: 3rem;
+    color: #ffffff;
+}
+
+.text-center{
+    text-align: center;
+}
+
+.option-card{
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.option-card:hover{
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.card-title{
+    font-size: 1.5rem;
+    margin-top: 10px;
+}
+
+
+
+
+@media(max-width: 768px) {
+    .card-title{
+        font-size: 1.2rem;
+    }
+   .material-icons{
+    font-size: 2.5rem;
+   }
+  .manager-heading h2{
+    font-size: 2rem;
+   }
+   .btn-light{
+    color:#212529;
+    background-color: #ffffff;
+    border-color: #212529;
+    margin-top: 10px;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border-radius: 25px;
+    transition: background-color 0.3s,color 0.3s;
+   }
+   .btn-light:hover{
+    background-color: #212529;
+    color: #ffffff;
+   }
+}

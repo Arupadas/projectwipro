@@ -8,7 +8,7 @@ const routes: Routes = [
   { path: '', component: LandingPageComponent },
   { path: 'batches', component: BatchesComponent },
   {path: "course-calender", component: CourseCalenderComponent },
-  { path: 'participant-requests', component: ParticipantRequestComponent },
+  { path: 'approval', component: ParticipantRequestComponent },
 ];
 
 @NgModule({

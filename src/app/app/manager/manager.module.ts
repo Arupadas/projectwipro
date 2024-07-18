@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { ManagerRoutingModule } from './manager-routing.module';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { BatchesComponent } from './batches/batches.component';
