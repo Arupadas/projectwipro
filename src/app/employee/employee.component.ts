@@ -16,9 +16,15 @@ export class EmployeeComponent {
   showCourseCalendar = false;
   showFeedbackForm = false;
   feedback: string = '';
+  enrolledCourses: number = 0;
   batches = [
-    { id: 1, batchName: 'Batch 1', courseId: 'C001', batchTutor: 'Tutor A' },
-    { id: 2, batchName: 'Batch 2', courseId: 'C002', batchTutor: 'Tutor B' }
+    { id: 1, batchName: 'Batch 101', courseName: 'Course A', batchTutor: 'Tutor A' },
+    { id: 2, batchName: 'Batch 102', courseName: 'Course B', batchTutor: 'Tutor B' },
+    { id: 3, batchName: 'Batch 103', courseName: 'Course C', batchTutor: 'Tutor C' },
+    { id: 4, batchName: 'Batch 104', courseName: 'Course D', batchTutor: 'Tutor D' },
+    { id: 5, batchName: 'Batch 105', courseName: 'Course E', batchTutor: 'Tutor E' },
+    { id: 6, batchName: 'Batch 106', courseName: 'Course F', batchTutor: 'Tutor F' }
+    
   ];
 
   calendarOptions: CalendarOptions = {
@@ -27,8 +33,13 @@ export class EmployeeComponent {
     events: [
       // Example events
       { title: 'Task 1', start: '2024-07-01' },
-      { title: 'Task 2', start: '2024-07-05' }
+      { title: 'Task 2', start: '2024-07-05' },
+      { title: 'Task 3', start: '2024-07-08' },
+      { title: 'Task 4', start: '2024-10-09' },
+      { title: 'Task 5', start: '2024-11-10' },
+      { title: 'Task 6', start: '2024-12-11' }
     ]
+
   };
 
   viewBatches() {
@@ -50,6 +61,7 @@ export class EmployeeComponent {
   enrollInBatch(batchId: number) {
     // Logic for enrolling in a batch
     alert(`Enrollment requested for batch ID: ${batchId}`);
+    this.enrolledCourses++;
   }
 
   submitFeedback() {
