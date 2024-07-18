@@ -43,6 +43,7 @@ export class CourseManagementComponent {
   showUpdateCourseForm = false;
   showAddCourseCalendarForm = false;
   showUpdateCourseCalendarForm = false;
+  showEditCourseForm = false;
   constructor(private courseService: CourseService) { }
   course = {
     courseName: '',
@@ -108,6 +109,26 @@ export class CourseManagementComponent {
       }
     );
   }
+
+  editCourse(course: CourseWithId) {
+    this.courseUpdate = {
+      Id: course.Id!,
+      courseName: course.courseName,
+      courseDescription: course.courseDescription,
+      duration: course.duration
+    };
+    this.showEditCourseForm = true;
+    this.showUpdateCourseForm = false;
+    this.showAddCourseForm = false;
+  }
+
+  cancelEdit() {
+    this.showEditCourseForm = false;
+    this.showUpdateCourseForm = true;
+  }
+
+  
+
 
   updateCourse() {
     this.courseService.updateCourse(this.courseUpdate).subscribe(
