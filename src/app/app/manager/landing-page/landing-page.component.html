@@ -1,0 +1,40 @@
+<div class="container mt-5 manager-container">
+<div class="container mt-5 manager-heading">
+    <h2 class ="text-center">
+        <span class="material-icons">dashboard</span>
+        Manger DashBoard
+    </h2>
+</div>
+<div class="row justify-content-center">
+    <div class="col-md-8 mb-3">
+        <div class="card option-card ">
+            <div class ="card-body text-center">
+                <span class="material-icons md-48 mb-3">assignment_turned_in</span>
+                <h5 class="card-title">Approval Work</h5>
+                <p class="card-text">View,accept,or reject participant request for enrollment to the desired batch.</p>
+                <button class="btn btn-light" (click)="navigateTo('approval')">Go to Approval Work</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8 mb-3">
+        <div class="card option-card ">
+            <div class ="card-body text-center">
+                <span class="material-icons md-48 mb-3">folder</span>
+                <h5 class="card-title">Batches</h5>
+                <p class="card-text">View the list of available batches.</p>
+                <button class="btn btn-light" (click)="navigateTo('batches')">Go to Batches</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8 mb-3">
+        <div class="card option-card">
+            <div class ="card-body text-center">
+                <span class="material-icons md-48 mb-3">folder</span>
+                <h5 class="card-title">Course Calander</h5>
+                <p class="card-text">View the calander of available batches.</p>
+                <button class="btn btn-light" (click)="navigateTo('batches')">Go to Batches</button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
