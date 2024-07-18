@@ -1,0 +1,101 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f6f8fa;
+  }
+  .container{
+    padding-bottom: 70px;
+  }
+  .company_title {
+    text-align: center;
+    background-image: linear-gradient(30deg , #0ea5c0, #44a7fd);
+    padding: 40px;
+    border: 1px solid #e1e4e8;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  .company_title h3{
+    font-size: 30px;
+    font-family: cursive;
+    margin-bottom: 1px;
+  }
+  .company_title p{
+  
+    font-size: 15px;
+  }
+  
+  .get-started-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    color: #fff;
+    background-image: linear-gradient(30deg , #0ea5c0, #44a7fd);
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    text-align: center;
+    margin-left: 470px;
+  }
+  
+  .get-started-button:hover {
+    background-color: #1565c0;
+  }
+  
+.site-footer {
+    background-image: linear-gradient(30deg , #40494a, #b0d1ef);
+    color: #ffffff;
+    padding: 40px 0;
+    
+  }
+  
+  .footer-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+   
+  }
+  
+  .footer-left, .footer-center, .footer-right {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .footer-left h4, .footer-center h4, .footer-right h4 {
+    margin-bottom: 15px;
+    font-size: 18px;
+  }
+  
+  .footer-left p, .footer-center p, .footer-right p {
+    margin-bottom: 10px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  
+  .social-icons a {
+    display: inline-block;
+    margin-right: 10px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 16px;
+  }
+  
+  .social-icons a:hover {
+    text-decoration: underline;
+  }
+  
+  .footer-bottom {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #1a252f;
+    margin-top: 20px;
+  }
+  
+  .footer-bottom p {
+    font-size: 14px;
+  }

@@ -5,6 +5,7 @@ import { LoginComponent } from '../login/login.component';
 import { AdminComponent } from './admin/admin.component';
 import { ManagerComponent } from './manager/manager.component';
 import { AppComponent } from './app.component';
+import { HomeComponent } from './home/home.component';
 import { CourseComponent } from './course-component/course-component.component';
 import { CourseCalendarComponent } from './course-calendar/course-calendar.component';
 import { CourseManagementComponent } from './course-management/course-management.component';
@@ -16,6 +17,7 @@ import { ParticipantRequestComponent } from './app/manager/participant-request/p
 
 
 const routes: Routes = [
+
   { path: 'login', component: LoginComponent },
   { path: 'course', component: CourseComponent },
   { path: 'admin', component: AdminComponent },
@@ -28,7 +30,9 @@ const routes: Routes = [
   {path : 'batch-management' , component :BatchManagementComponent} ,
 
 
-  { path: '**', redirectTo: 'login' } // Redirect any unmatched routes to the login page
+  { path: "", redirectTo: "Home", pathMatch: "full" },
+  { path: "Home", component: HomeComponent },
+  { path: "home", component: HomeComponent }, // Redirect any unmatched routes to the login page
 ];
 
 @NgModule({
