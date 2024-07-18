@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap');
+
+
 .container {
   display: flex;
 }
@@ -224,176 +227,160 @@ body {
 }
 
 
-course-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
+:root {
+  --primary-color: #3498db;
+  --secondary-color: #2ecc71;
+  --background-color: #ecf0f1;
+  --text-color: #34495e;
+  --card-background: #ffffff;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.fancy-font {
+  font-family: 'Playfair Display', serif;
+}
+
+.container {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 20px;
 }
 
-.course-card {
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  transition: transform 0.3s ease;
-  margin-top: 100px;
+aside {
+  flex: 0 0 200px;
+  margin-right: 20px;
 }
 
-.course-card:hover {
-  transform: translateY(-5px);
-}
-
-.course-image img {
+.fancy-button {
+  display: block;
   width: 100%;
-  height: 150px;
-  object-fit: cover;
-}
-
-.course-info {
-  padding: 15px;
-}
-
-.course-info h3 {
-  margin: 0 0 10px;
-  font-size: 18px;
-  color: #333;
-}
-
-.course-info p {
-  font-size: 14px;
-  color: #666;
-  margin-bottom: 15px;
-}
-
-
-.course-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  margin-bottom: 30px;
-}
-
-.course-card {
-  flex: 0 1 calc(33.333% - 20px);
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.course-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-}
-
-.course-image img {
-  width: 100%;
-  height: 160px;
-  object-fit: cover;
-}
-
-.course-info {
-  padding: 15px;
-}
-
-.course-info h3 {
-  margin: 0 0 10px;
-  font-size: 18px;
-  color: #1f1f1f;
-  font-weight: 600;
-}
-
-.course-info p {
-  font-size: 14px;
-  color: #666;
-  margin-bottom: 15px;
-  line-height: 1.4;
-  height: 60px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-}
-
-.course-meta {
-  font-size: 12px;
-  color: #666;
-}
-
-.duration {
-  display: inline-block;
-  background: #f0f0f0;
-  padding: 3px 8px;
-  border-radius: 12px;
-}
-
-.duration i {
-  margin-right: 4px;
-}
-
-/* Responsive adjustments */
-@media (max-width: 1200px) {
-  .course-card {
-    flex: 0 1 calc(50% - 20px);
-  }
-}
-
-@media (max-width: 768px) {
-  .course-card {
-    flex: 0 1 100%;
-  }
-}
-
-
-.course-actions {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  display: flex;
-  gap: 5px;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.course-card:hover .course-actions {
-  opacity: 1;
-}
-
-.edit-btn,
-.delete-btn {
-  background: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: var(--primary-color);
+  color: white;
   border: none;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  border-radius: 5px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-.edit-btn:hover,
-.delete-btn:hover {
-  background: rgba(255, 255, 255, 1);
+.fancy-button:hover {
+  background-color: darken(var(--primary-color), 10%);
 }
 
-.edit-btn i {
-  color: #4CAF50;
+.user-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
 }
 
-.delete-btn i {
-  color: #F44336;
+.user-card {
+  background-color: var(--card-background);
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
 }
 
-.course-image {
-  width: 100%;
-  height: 160px;
-  background-image: url('https://media.istockphoto.com/id/1353769234/photo/training-and-skill-development-concept-with-icons-of-online-course-conference-seminar-webinar.jpg?b=1&s=612x612&w=0&k=20&c=1HIqyEn7_T6-WMcNGxdv9CN45tb_FUp-eqZf9kG6G8A=');
-  background-size: cover;
-  background-position: center;
+.user-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
+.user-avatar {
+  background-color: var(--primary-color);
+  color: white;
+  font-size: 48px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-info {
+  padding: 20px;
+  flex-grow: 1;
+}
+
+.user-info h3 {
+  margin: 0 0 10px;
+  color: var(--primary-color);
+}
+
+.user-info p {
+  margin: 5px 0;
+  display: flex;
+  align-items: center;
+}
+
+.user-info p i {
+  margin-right: 10px;
+  color: var(--secondary-color);
+}
+
+.badge {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8em;
+  font-weight: 600;
+}
+
+.email-badge {
+  background-color: #3498db;
+  color: white;
+}
+
+.role-badge {
+  background-color: #2ecc71;
+  color: white;
+}
+
+.date-badge {
+  background-color: #f39c12;
+  color: white;
+}
+
+.user-meta {
+  font-size: 0.9em;
+  color: #7f8c8d;
+  margin-top: 10px;
+}
+
+.user-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+  background-color: #f8f9fa;
+}
+
+.user-actions button {
+  background: none;
+  border: none;
+  font-size: 18px;
+  margin-left: 10px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.edit-btn {
+  color: var(--primary-color);
+}
+
+.delete-btn {
+  color: #e74c3c;
+}
+
+.user-actions button:hover {
+  opacity: 0.8;
+}

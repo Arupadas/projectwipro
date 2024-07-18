@@ -7,7 +7,7 @@ import { Batch, BatchEnrollment } from '../Models/batchmanagement.model';
   providedIn: 'root'
 })
 export class BatchService {
-  private apiUrl = 'http://localhost:5020'; // Replace with your API URL
+  private apiUrl = 'http://localhost:5020/api'; // Replace with your API URL
 
   constructor(private http: HttpClient) {}
 
@@ -23,10 +23,14 @@ export class BatchService {
     return this.http.delete<void>(`${this.apiUrl}/Batch/${id}`, this.httpOptions());
   }
 
+  getBatches(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/Batch`);
+  }
+
   
 
   enrollEmployee(enrollment: BatchEnrollment): Observable<BatchEnrollment> {
-    return this.http.post<BatchEnrollment>(`${this.apiUrl}/api/BatchEnrollment`, enrollment, this.httpOptions());
+    return this.http.post<BatchEnrollment>(`${this.apiUrl}/BatchEnrollment`, enrollment, this.httpOptions());
   }
 
   private httpOptions() {

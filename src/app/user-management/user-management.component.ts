@@ -1,5 +1,3 @@
-// user-management.component.ts
-
 import { Component, OnInit } from '@angular/core';
 import { User, UserRole } from '../Models/user.model';
 import { UserService } from '../Services/user.service';
@@ -10,25 +8,11 @@ import { UserService } from '../Services/user.service';
   styleUrls: ['./user-management.component.css']
 })
 export class UserManagementComponent implements OnInit {
-  showAddUserForm = true;
-  showEditUserForm = false;
-  newUser: User = {
-    userID: 0, // Initialize with a default number
-    username: '',
-    passwordHash: '',
-    email: '',
-    createdAt: new Date(),
-    role: UserRole.Employee
-  };
+  showAddUserForm = false;
+  showUserList = true;
+  selectedUser: User | null = null;
 
-  userUpdate: User = {
-    userID: 0, // Initialize with a default number
-    username: '',
-    passwordHash: '',
-    email: '',
-    createdAt: new Date(),
-    role: UserRole.Employee
-  };
+  newUser: User = this.getDefaultUser();
   userList: User[] = [];
   UserRole = UserRole;
 
@@ -49,12 +33,8 @@ export class UserManagementComponent implements OnInit {
 
   toggleAddUserForm() {
     this.showAddUserForm = !this.showAddUserForm;
-    this.showEditUserForm = false;
-  }
-
-  toggleEditUserForm() {
-    this.showEditUserForm = !this.showEditUserForm;
-    this.showAddUserForm = false;
+    this.showUserList = !this.showAddUserForm;
+    this.selectedUser = null;
   }
 
   createUser() {
@@ -69,8 +49,8 @@ export class UserManagementComponent implements OnInit {
   }
 
   editUser(user: User) {
-    this.userUpdate = { ...user };
-    this.toggleEditUserForm();
+    this.selectedUser = { ...user };
+    this.showAddUserForm = false;
   }
 
   deleteUser(userID: number) {
@@ -88,31 +68,17 @@ export class UserManagementComponent implements OnInit {
   }
 
   resetUserForm() {
-    this.newUser = {
-      userID: 0, // Initialize with a default number
-      username: '',
-      passwordHash: '',
-      email: '',
-      createdAt: new Date(),
-      role: UserRole.Employee
-    };
-    this.userUpdate = {
-      userID: 0, // Initialize with a default number
-      username: '',
-      passwordHash: '',
-      email: '',
-      createdAt: new Date(),
-      role: UserRole.Employee
-    };
-    this.showAddUserForm = true;
-    this.showEditUserForm = false;
+    this.newUser = this.getDefaultUser();
+    this.selectedUser = null;
+    this.showAddUserForm = false;
+    this.showUserList = true;
   }
+
   updateUser() {
-    if (this.userUpdate.userID) {
-      this.userService.updateUser(this.userUpdate).subscribe({
+    if (this.selectedUser && this.selectedUser.userID) {
+      this.userService.updateUser(this.selectedUser).subscribe({
         next: (updatedUser) => {
           console.log('User updated:', updatedUser);
-          // Update the user in the userList
           const index = this.userList.findIndex(user => user.userID === updatedUser.userID);
           if (index !== -1) {
             this.userList[index] = updatedUser;
@@ -125,7 +91,19 @@ export class UserManagementComponent implements OnInit {
       console.error('UserID is required for update');
     }
   }
+
   cancelEdit() {
     this.resetUserForm();
+  }
+
+  private getDefaultUser(): User {
+    return {
+      userID: 0,
+      username: '',
+      passwordHash: '',
+      email: '',
+      createdAt: new Date(),
+      role: UserRole.Employee
+    };
   }
 }

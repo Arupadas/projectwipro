@@ -1,37 +1,37 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CalendarOptions } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
+import { BatchService } from '../Services/batch.service'; // Adjust the path as needed
+import { BatchEnrollment, EnrollmentStatus } from '../Models/batchmanagement.model'; // Adjust the path as needed
+import {jwtDecode} from 'jwt-decode';
+
+interface JwtPayload {
+  sub: string; // Username or subject
+  jti: string; // JWT ID
+  email: string;
+  role: string;
+  'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier': string; // User ID or employee ID
+}
 
 @Component({
   selector: 'app-employee',
   templateUrl: './employee.component.html',
   styleUrls: ['./employee.component.css']
 })
-export class EmployeeComponent {
-  requestEnrollment() {
-    throw new Error('Method not implemented.');
-  }
+export class EmployeeComponent implements OnInit {
   showBatches = false;
   showCourseCalendar = false;
   showFeedbackForm = false;
   feedback: string = '';
   enrolledCourses: number = 0;
-  batches = [
-    { id: 1, batchName: 'Batch 101', courseName: 'Course A', batchTutor: 'Tutor A' },
-    { id: 2, batchName: 'Batch 102', courseName: 'Course B', batchTutor: 'Tutor B' },
-    { id: 3, batchName: 'Batch 103', courseName: 'Course C', batchTutor: 'Tutor C' },
-    { id: 4, batchName: 'Batch 104', courseName: 'Course D', batchTutor: 'Tutor D' },
-    { id: 5, batchName: 'Batch 105', courseName: 'Course E', batchTutor: 'Tutor E' },
-    { id: 6, batchName: 'Batch 106', courseName: 'Course F', batchTutor: 'Tutor F' }
-    
-  ];
+  batches: any[] = [];
+  employeeId: string | null = null;
 
   calendarOptions: CalendarOptions = {
     plugins: [dayGridPlugin, interactionPlugin],
     initialView: 'dayGridMonth',
     events: [
-      // Example events
       { title: 'Task 1', start: '2024-07-01' },
       { title: 'Task 2', start: '2024-07-05' },
       { title: 'Task 3', start: '2024-07-08' },
@@ -39,8 +39,39 @@ export class EmployeeComponent {
       { title: 'Task 5', start: '2024-11-10' },
       { title: 'Task 6', start: '2024-12-11' }
     ]
-
   };
+
+  constructor(private batchService: BatchService) { }
+
+  ngOnInit(): void {
+    this.loadBatches();
+    this.employeeId = this.getEmployeeIdFromToken();
+  }
+
+  loadBatches() {
+    this.batchService.getBatches().subscribe(
+      (data: any[]) => {
+        this.batches = data;
+      },
+      error => {
+        console.error('Error fetching batches', error);
+      }
+    );
+  }
+
+  getEmployeeIdFromToken(): string | null {
+    const token = localStorage.getItem('token');
+    if (token) {
+      try {
+        const decoded: JwtPayload = jwtDecode(token);
+        return decoded['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier']; // Extract the userId or employeeId
+      } catch (error) {
+        console.error('Failed to decode token', error);
+        return null;
+      }
+    }
+    return null;
+  }
 
   viewBatches() {
     this.showBatches = true;
@@ -59,13 +90,28 @@ export class EmployeeComponent {
   }
 
   enrollInBatch(batchId: number) {
-    // Logic for enrolling in a batch
-    alert(`Enrollment requested for batch ID: ${batchId}`);
-    this.enrolledCourses++;
+    if (this.employeeId) {
+      const enrollment: BatchEnrollment = {
+        batchId: batchId,
+        employeeId: parseInt(this.employeeId, 10), // Convert to number if needed
+        status: EnrollmentStatus.Pending
+      };
+
+      this.batchService.enrollEmployee(enrollment).subscribe(
+        () => {
+          alert(`Enrollment requested for batch ID: ${batchId}`);
+          this.enrolledCourses++;
+        },
+        error => {
+          console.error('Error enrolling in batch', error);
+        }
+      );
+    } else {
+      console.error('Employee ID not found');
+    }
   }
 
   submitFeedback() {
-    // Logic for submitting feedback
     console.log(this.feedback);
     this.feedback = '';
     this.showFeedbackForm = false;

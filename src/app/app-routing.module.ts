@@ -25,7 +25,7 @@ const routes: Routes = [
   { path:'manager-dashboard', loadChildren:()=> import('./app/manager/manager.module').then(m=>m.ManagerModule), data:{role:'Manager'}},
   { path: 'batches', component: BatchesComponent },
   { path: 'approval', component: ParticipantRequestComponent },
-  { path: 'employee', component: EmployeeComponent},
+  { path: 'employee-dashboard', component: EmployeeComponent},
   { path: 'calendar', component: CourseCalendarComponent},
   { path: 'course-management', component: CourseManagementComponent},
   {path : 'batch-management' , component :BatchManagementComponent} ,
