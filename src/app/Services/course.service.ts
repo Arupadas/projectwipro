@@ -1,35 +1,45 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Course  , CourseWithId , CourseCalendar , CourseCalendarUpdate} from '../Models/course.model'; // Ensure you have a Course model defined
+import { Course, CourseWithId, CourseCalendar, CourseCalendarUpdate } from '../Models/course.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CourseService {
-
   private apiUrl = 'http://localhost:5074'; // Replace with your backend API URL
 
   constructor(private http: HttpClient) { }
 
-  addCourse(course: Course): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/api/Course`, course);
+  getCourses(): Observable<Course[]> {
+    return this.http.get<Course[]>(`${this.apiUrl}/api/Course`);
   }
 
-  updateCourse(course: CourseWithId): Observable<any> {
-    return this.http.put<any>(`${this.apiUrl}/api/Course/${course.Id}`, course);
+  getCourse(id: number): Observable<Course> {
+    return this.http.get<Course>(`${this.apiUrl}/api/Course/${id}`);
   }
 
-  addCourseCalendar(courseCalendar: CourseCalendar): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/api/CourseCalendar`, courseCalendar);
+  addCourse(course: Course): Observable<Course> {
+    return this.http.post<Course>(`${this.apiUrl}/api/Course`, course);
   }
 
-  updateCourseCalendar(courseCalendar: CourseCalendarUpdate): Observable<any> {
-    return this.http.put<any>(`${this.apiUrl}/api/CourseCalendar/${courseCalendar.Id}`, courseCalendar);
+  updateCourse(course: CourseWithId): Observable<Course> {
+    return this.http.put<Course>(`${this.apiUrl}/api/Course/${course.Id}`, course);
   }
 
+  deleteCourse(id: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/api/Course/${id}`);
+  }
 
-  
+  addCourseCalendar(courseCalendar: CourseCalendar): Observable<CourseCalendar> {
+    return this.http.post<CourseCalendar>(`${this.apiUrl}/api/CourseCalendar`, courseCalendar);
+  }
 
-  // Add more methods as needed (editCourse, deleteCourse, etc.)
+  updateCourseCalendar(courseCalendar: CourseCalendarUpdate): Observable<CourseCalendar> {
+    return this.http.put<CourseCalendar>(`${this.apiUrl}/api/CourseCalendar/${courseCalendar.Id}`, courseCalendar);
+  }
+
+  deleteCourseCalendar(id: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/api/CourseCalendar/${id}`);
+  }
 }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CourseService } from '../Services/course.service';
-//import { Course  , CourseWithId , CourseCalendar , CourseCalendarUpdate} from '../Models/course.model';
+//import { Course } from '../Models/courseview.model';
+import { Course  , CourseWithId , CourseCalendar , CourseCalendarUpdate} from '../Models/course.model';
 
 @Component({
   selector: 'app-course-management',
@@ -8,6 +9,36 @@ import { CourseService } from '../Services/course.service';
   styleUrls: ['./course-management.component.css']
 })
 export class CourseManagementComponent {
+  courses: Course[] = []; 
+  ngOnInit() {
+    
+    this.loadCourses();
+  }
+
+  //   {
+  //     Id: 1,
+  //     courseName: 'Java',
+  //     courseDescription: 'Learn Java from basics to advanced.',
+  //     duration: 40,
+  //     CourseCalendar: []
+  //   },
+  //   {
+  //     id: 2,
+  //     courseName: 'Python',
+  //     courseDescription: 'Comprehensive Python programming course.',
+  //     duration: 30,
+  //     courseCalendars: []
+  //   },
+  //   {
+  //     id: 3,
+  //     courseName: 'Angular',
+  //     courseDescription: 'Master Angular framework and build modern web apps.',
+  //     duration: 50,
+  //     courseCalendars: []
+  //   }
+  // ];
+
+
   showAddCourseForm = true;
   showUpdateCourseForm = false;
   showAddCourseCalendarForm = false;
@@ -102,6 +133,16 @@ export class CourseManagementComponent {
       error => {
         console.error('Error updating course:', error);
         // Handle error appropriately
+      }
+    );
+  }
+  loadCourses() {
+    this.courseService.getCourses().subscribe(
+      (courses) => {
+        this.courses = courses;
+      },
+      (error) => {
+        console.error('Error loading courses:', error);
       }
     );
   }

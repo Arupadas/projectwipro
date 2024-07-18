@@ -23,13 +23,13 @@ export interface DailyTask {
     courseCalendars: CourseCalendar[];
   }
 
-  export interface CalendarEvent {
-    id: number;
-    start: Date;
-    end: Date;
-    title: string;
-    color?: string;
-    textColor?: string;
-  }
-  
+export interface CalendarEvent {
+  id: number;
+  start: Date;
+  end: Date;
+  title: string;
+  color?: string;
+  textColor?: string;
+}
+
   
