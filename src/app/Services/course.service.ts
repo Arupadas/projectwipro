@@ -23,8 +23,8 @@ export class CourseService {
     return this.http.post<Course>(`${this.apiUrl}/api/Course`, course);
   }
 
-  updateCourse(course: CourseWithId): Observable<Course> {
-    return this.http.put<Course>(`${this.apiUrl}/api/Course/${course.Id}`, course);
+  updateCourse(course: CourseWithId): Observable<CourseWithId> {
+    return this.http.put<CourseWithId>(`${this.apiUrl}/api/Course/${course.Id}`, course);
   }
 
   deleteCourse(id: number): Observable<any> {

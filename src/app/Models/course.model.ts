@@ -1,10 +1,11 @@
 // models/course.model.ts
 
 export interface Course {
-    Id?: number|null|undefined;
+    Id?: number;
     courseName: string;
     courseDescription: string;
     duration: number;
+    CourseCalendar?:[]
   }
 
   
@@ -13,6 +14,7 @@ export interface CourseWithId {
     courseName: string;
     courseDescription: string;
     duration: number;
+    CourseCalendar?:[]
   }
 
   export interface CourseCalendar {
