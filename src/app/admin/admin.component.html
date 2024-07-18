@@ -16,11 +16,11 @@
         }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--secondary-color);
             margin: 0;
             padding: 40px;
             min-height: 100vh;
             box-sizing: border-box;
+
         }
         .page-title {
             text-align: center;
@@ -28,7 +28,18 @@
             font-size: 36px;
             margin-bottom: 40px;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
+            width: auto;
+            padding: 20px;
+            box-sizing: border-box;
+            border: 1px solid #e1e4e8;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-image: linear-gradient(30deg , #0ea5c0, #44a7fd);
+            height: 100px;
+            font-family: cursive;
+            margin-top: 0px;
+            
         }
         .container {
             display: grid;
@@ -36,6 +47,7 @@
             gap: 30px;
             max-width: 900px;
             margin: 0 auto;
+            
         }
         .card {
             background-color: var(--card-bg-color);
@@ -48,6 +60,7 @@
             flex-direction: column;
             justify-content: space-between;
             height: 280px;
+            background-image: linear-gradient(30deg , #d4f9ff, #d9edff);
         }
         .card:hover {
             transform: translateY(-5px);
@@ -70,7 +83,7 @@
             display: inline-block;
             padding: 10px 20px;
             background-color: var(--primary-color);
-            color: #ffffff;
+            color: black;
             text-decoration: none;
             border-radius: 6px;
             transition: background-color 0.3s ease-in-out;
@@ -78,7 +91,7 @@
             font-weight: 500;
         }
         .card a:hover {
-            background-color: #3677c5;
+            background-color: #717c89;
         }
         .icon {
             font-size: 48px;
@@ -96,7 +109,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <h1 class="page-title">Administrator</h1>
+    <h1 class="page-title">Administrator Dashboard</h1>
     <div class="container">
         <div class="card">
             <i class="fas fa-book icon"></i>

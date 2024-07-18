@@ -26,7 +26,7 @@
 
   <div class="main-content">
     <div class="course-grid"   *ngIf ="showUpdateCourseForm"  >
-      <div class="course-card" *ngFor="let course of courses">
+      <div class="course-card" *ngFor="let courseUpdate of courses">
         <div class="course-image">
 
         </div>
@@ -49,6 +49,7 @@
       <form *ngIf="showAddCourseForm" (ngSubmit)="addCourse()">
         <label for="courseId">Course Name:</label>
         <input id="Id" [(ngModel)]="courseUpdate.Id" name="Id" required>
+        <h3>Add Course</h3>
         <label for="courseName">Course Name:</label>
         <input id="courseName" [(ngModel)]="courseUpdate.courseName" name="courseName" required>
 
