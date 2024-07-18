@@ -26,7 +26,7 @@
 
   <div class="main-content">
     <div class="course-grid"   *ngIf ="showUpdateCourseForm"  >
-      <div class="course-card" *ngFor="let courseUpdate of courses">
+      <div class="course-card" *ngFor="let course of courses">
         <div class="course-image">
 
         </div>
@@ -38,7 +38,7 @@
           </div>
         </div>
         <div class="course-actions">
-          <button class="edit-btn" (click)="editCourse(courseUpdate)"><i class="fa fa-edit"></i></button>
+          <button class="edit-btn" (click)="editCourse(course)"><i class="fa fa-edit"></i></button>
           <button class="delete-btn"><i class="fa fa-trash"></i></button>
         </div>
       </div>
@@ -47,17 +47,16 @@
     
     <div  *ngIf="showAddCourseForm " class="form-container">
       <form *ngIf="showAddCourseForm" (ngSubmit)="addCourse()">
-        <label for="courseId">Course Name:</label>
-        <input id="Id" [(ngModel)]="courseUpdate.Id" name="Id" required>
+  
         <h3>Add Course</h3>
         <label for="courseName">Course Name:</label>
-        <input id="courseName" [(ngModel)]="courseUpdate.courseName" name="courseName" required>
+        <input id="courseName" [(ngModel)]="course.courseName" name="courseName" required>
 
         <label for="courseDescription">Course Description:</label>
-        <input id="courseDescription" [(ngModel)]="courseUpdate.courseDescription" name="courseDescription" required>
+        <input id="courseDescription" [(ngModel)]="course.courseDescription" name="courseDescription" required>
 
         <label for="duration">Duration:</label>
-        <input id="duration" type="number" [(ngModel)]="courseUpdate.duration" name="duration" required>
+        <input id="duration" type="number" [(ngModel)]="course.duration" name="duration" required>
 
         <button type="submit">Add Course</button>
       </form>
@@ -66,6 +65,8 @@
     <div *ngIf="showEditCourseForm" class="form-container">
       <form (ngSubmit)="updateCourse()">
         <h2>Edit Course</h2>
+        <label for="editCourseId">Course Id:</label>
+        <input id="editCourseId" [(ngModel)]="courseUpdate.id" name="editCourseId" required>
         <label for="editCourseName">Course Name:</label>
         <input id="editCourseName" [(ngModel)]="courseUpdate.courseName" name="editCourseName" required>
 

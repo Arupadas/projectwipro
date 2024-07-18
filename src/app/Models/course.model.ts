@@ -10,7 +10,7 @@ export interface Course {
 
   
 export interface CourseWithId {
-    Id: number;
+    id?: number;
     courseName: string;
     courseDescription: string;
     duration: number;

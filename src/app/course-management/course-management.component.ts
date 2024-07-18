@@ -45,13 +45,13 @@ export class CourseManagementComponent {
   showUpdateCourseCalendarForm = false;
   showEditCourseForm = false;
   constructor(private courseService: CourseService) { }
-  course = {
+  course:Course = {
     courseName: '',
     courseDescription: '',
     duration: 0
   };
-  courseUpdate = {
-    Id :0,
+  courseUpdate:CourseWithId = {
+    id :0,
     courseName: '',
     courseDescription: '',
     duration: 0
@@ -87,6 +87,7 @@ export class CourseManagementComponent {
     this.courseService.addCourse(this.course).subscribe(
       response => {
         this.showAddCourseForm = !this.showAddCourseForm;
+        this.showUpdateCourseForm  =false;
         console.log('Course added successfully:', response);
         // Optionally reset form or handle success
       },
@@ -109,18 +110,15 @@ export class CourseManagementComponent {
       }
     );
   }
-
-  editCourse(course: CourseWithId) {
-    this.courseUpdate = {
-      Id: course.Id!,
-      courseName: course.courseName,
-      courseDescription: course.courseDescription,
-      duration: course.duration
-    };
+  editCourse(course: Course) {
+    console.log(course);
+    this.courseUpdate = { ...course };
     this.showEditCourseForm = true;
     this.showUpdateCourseForm = false;
     this.showAddCourseForm = false;
   }
+
+  
 
   cancelEdit() {
     this.showEditCourseForm = false;
@@ -135,6 +133,7 @@ export class CourseManagementComponent {
       response => {
         console.log('Course updated successfully:', response);
         this.showUpdateCourseForm = !this.showUpdateCourseForm;
+        this.loadCourses();
  // Optionally refresh data or close form after success
       },
       error => {
@@ -149,6 +148,7 @@ export class CourseManagementComponent {
       response => {
         console.log('Course updated successfully:', response);
         this.showUpdateCourseCalendarForm = !this.showUpdateCourseCalendarForm;
+        this.showEditCourseForm = !this.showEditCourseForm
  // Optionally refresh data or close form after success
       },
       error => {
