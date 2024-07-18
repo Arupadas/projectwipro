@@ -1,0 +1,125 @@
+.container{
+    background-color: #343a40;
+    padding:30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+
+}
+
+.heading-div{
+    text-align: center;
+    margin-bottom: 30px;
+    background-color:#212529;
+    color:#ffffff;
+    padding: 8px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.list-group-item{
+    background-color: #343a40;
+    color:white;
+    border: 1px solid #454d55;
+    padding: 1rem;
+    border-radius: 5px;
+    transition:  background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.list-group-item:hover{
+    background-color: #495057;
+    border-color: #adb5bd;
+}
+
+.material-icons.md-48{
+    font-size: 50px;
+    color:#ffffff;
+    margin-right: 10px;
+}
+
+.heading-text{
+    color:#ffffff;
+    font-size: 30px;
+    margin: 0;
+}
+
+.card{
+    background-color: #212529;
+    border: none;
+    border-radius: 10px;
+}
+
+
+.alert-info{
+    background-color: #007bff;
+    color: #ffffff;
+    border:none;
+    border-radius: 10px;
+}
+
+.material-icons.md-48{
+    font-size: 24px;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.btn{
+    display: inline-flex;
+    align-items: center;
+}
+
+.btn .material-icons{
+    margin-right: 5px;
+}
+
+.btn-creative{
+    padding:10px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+}
+
+.btn-accept{
+    background-color: linear-gradient(45deg,#28a745,#218838);
+    color:white;
+    box-shadow: 0 4px 10px rgba(40,167,69,0.5)
+}
+
+.btn-reject{
+    background-color: linear-gradient(45deg,#dc3545,#c82333);
+    color:white;
+    box-shadow: 0 4px 10px rgba(220,53,69,0.5)
+}
+
+.btn-creative:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+.btn-creative:active{
+    transform: translateY(1px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.btn-creative:disabled,
+.btn-creative[disabled]{
+    background-color: linear-gradient(45deg,#6c757d,#5a6268);
+    color:#e9ecef;
+    box-shadow: none;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-creative:disabled:hover,
+.btn-creative[disabled]:hover{
+    transform: none;
+    box-shadow: none;
+}
+

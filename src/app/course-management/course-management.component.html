@@ -7,12 +7,9 @@
     </button>
     <button (click)="toggleUpdateCourseForm()">
       <i class="fa fa-user-o" aria-hidden="true"></i>
-      Edit Course
+      Edit/Delete Course
     </button>
-    <button >
-      <i class="fa fa-user-o" aria-hidden="true"></i>
-      Delete Course
-    </button>
+    
     <button >
       <i class="fa fa-user-o" aria-hidden="true"></i>
       Create Calendar
@@ -28,9 +25,27 @@
   </aside>
 
   <div class="main-content">
+    <div class="course-grid"   *ngIf ="showUpdateCourseForm"  >
+      <div class="course-card" *ngFor="let course of courses">
+        <div class="course-image">
+
+        </div>
+        <div class="course-info">
+          <h3>{{ course.courseName }}</h3>
+          <p>{{ course.courseDescription }}</p>
+          <div class="course-meta">
+            <span class="duration"><i class="fa fa-clock-o"></i> {{ course.duration }} hours</span>
+          </div>
+        </div>
+        <div class="course-actions">
+          <button class="edit-btn"><i class="fa fa-edit"></i></button>
+          <button class="delete-btn"><i class="fa fa-trash"></i></button>
+        </div>
+      </div>
+    </div>
   
-    <div  *ngIf="showAddCourseForm || showUpdateCourseForm" class="form-container">
-      
+    
+    <div  *ngIf="showAddCourseForm " class="form-container">
       <form *ngIf="showAddCourseForm" (ngSubmit)="addCourse()">
         <h3>Add Course</h3>
         <label for="courseName">Course Name:</label>
@@ -45,22 +60,7 @@
         <button type="submit">Add Course</button>
       </form>
 
-      <form *ngIf="showUpdateCourseForm" (ngSubmit)="updateCourse()">
-        <h3>Edit Course</h3>
-        <label for="courseId">Course Id</label>
-        <input type="number" class="form-control" id="courseId" [(ngModel)]="courseUpdate.Id" name="courseId" required>
-        
-        <label for="courseName">Course Name:</label>
-        <input id="courseName" [(ngModel)]="courseUpdate.courseName" name="courseName" required>
-
-        <label for="courseDescription">Course Description:</label>
-        <input id="courseDescription" [(ngModel)]="courseUpdate.courseDescription" name="courseDescription" required>
-
-        <label for="duration">Duration:</label>
-        <input id="duration" type="number" [(ngModel)]="courseUpdate.duration" name="duration" required>
-
-        <button type="submit">Update Course</button>
-      </form>
+      
     </div>
   </div>
 </div>

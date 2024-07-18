@@ -1,6 +1,7 @@
 // models/course.model.ts
 
 export interface Course {
+    Id?: number|null|undefined;
     courseName: string;
     courseDescription: string;
     duration: number;
