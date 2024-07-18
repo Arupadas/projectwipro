@@ -8,6 +8,7 @@ export interface DailyTask {
   
   export interface CourseCalendar {
     id: number;
+    batchName:string ,
     courseId: number;
     startDate: string;
     endTime: string;
@@ -21,4 +22,14 @@ export interface DailyTask {
     duration: number;
     courseCalendars: CourseCalendar[];
   }
+
+  export interface CalendarEvent {
+    id: number;
+    start: Date;
+    end: Date;
+    title: string;
+    color?: string;
+    textColor?: string;
+  }
+  
   

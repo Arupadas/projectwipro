@@ -13,7 +13,7 @@
               <mat-label>Select Course Calendar</mat-label>
               <mat-select (selectionChange)="onCalendarChange(course.id, $event.value)">
                 <mat-option *ngFor="let calendar of course.courseCalendars" [value]="calendar.id">
-                  {{ calendar.startDate | date }} - {{ calendar.endTime | date }}
+                  {{ calendar.batchName }}
                 </mat-option>
               </mat-select>
             </mat-form-field>

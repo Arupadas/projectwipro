@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CourseService } from '../Services/course.service';
-import { Course  , CourseWithId , CourseCalendar , CourseCalendarUpdate} from '../Models/course.model';
+//import { Course  , CourseWithId , CourseCalendar , CourseCalendarUpdate} from '../Models/course.model';
 
 @Component({
   selector: 'app-course-management',
@@ -8,7 +8,7 @@ import { Course  , CourseWithId , CourseCalendar , CourseCalendarUpdate} from '.
   styleUrls: ['./course-management.component.css']
 })
 export class CourseManagementComponent {
-  showAddCourseForm = false;
+  showAddCourseForm = true;
   showUpdateCourseForm = false;
   showAddCourseCalendarForm = false;
   showUpdateCourseCalendarForm = false;
@@ -38,9 +38,11 @@ export class CourseManagementComponent {
 
   toggleAddCourseForm() {
     this.showAddCourseForm = !this.showAddCourseForm;
+    this.showUpdateCourseForm = false ;
   }
   toggleUpdateCourseForm() {
     this.showUpdateCourseForm = !this.showUpdateCourseForm;
+    this.showAddCourseForm  = false ;
   }
   toggleAddCourseCalendarForm() {
     this.showAddCourseCalendarForm  = !this.showAddCourseCalendarForm ;

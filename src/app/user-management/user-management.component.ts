@@ -1,44 +1,83 @@
 // user-management.component.ts
 
-import { Component } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
+import { User, UserRole } from  '../Models/user.model';
+import { UserService } from '../Services/user.service';
 @Component({
   selector: 'app-user-management',
   templateUrl: './user-management.component.html',
   styleUrls: ['./user-management.component.css']
 })
-export class UserManagementComponent {
-  newUser: any = {};
-  userList: any[] = [
-    { username: 'John Doe', email: 'john.doe@example.com', role: 'admin' },
-    { username: 'Jane Doe', email: 'jane.doe@example.com', role: 'user' }
-  ];
+export class UserManagementComponent implements OnInit {
+  newUser: User = {
+    username: '',
+    passwordHash: '',
+    email: '',
+    createdAt: new Date(),
+    role: UserRole.Employee
+  };
+  userList: User[] = [];
+  UserRole = UserRole; // Expose UserRole to the template
 
-  createUser() {
-    // Implement your logic to create a new user
-    console.log('Creating user:', this.newUser);
-    this.userList.push({ ...this.newUser });
-    this.clearForm();
+  constructor(private userService: UserService) {}
+
+  ngOnInit() {
+    this.loadUsers();
   }
 
-  editUser(user: any) {
-    // Implement your logic to edit a user
-    console.log('Editing user:', user);
-    // Example: populate form fields for editing
+  loadUsers() {
+    this.userService.getUsers().subscribe({
+      next: (users) => {
+        this.userList = users;
+      },
+      error: (error) => console.error('Error loading users:', error)
+    });
+  }
+
+  createUser() {
+    this.userService.createUser(this.newUser).subscribe({
+      next: (createdUser) => {
+        console.log('User created:', createdUser);
+        this.userList.push(createdUser);
+        this.clearForm();
+      },
+      error: (error) => console.error('Error creating user:', error)
+    });
+  }
+
+  editUser(user: User) {
     this.newUser = { ...user };
   }
 
-  deleteUser(user: any) {
-    // Implement your logic to delete a user
-    console.log('Deleting user:', user);
-    const index = this.userList.indexOf(user);
-    if (index !== -1) {
-      this.userList.splice(index, 1);
-    }
+  updateUser() {
+    this.userService.updateUser(this.newUser).subscribe({
+      next: (updatedUser) => {
+        console.log('User updated:', updatedUser);
+        this.loadUsers();
+        this.clearForm();
+      },
+      error: (error) => console.error('Error updating user:', error)
+    });
+  }
+
+  deleteUser(user: User) {
+    this.userService.deleteUser(user.userID).subscribe({
+      next: () => {
+        console.log('User deleted');
+        this.loadUsers();
+      },
+      error: (error) => console.error('Error deleting user:', error)
+    });
   }
 
   clearForm() {
-    // Clear form fields after submission
-    this.newUser = {};
+    this.newUser = {
+      userID: 0,
+      username: '',
+      passwordHash: '',
+      email: '',
+      createdAt: new Date(),
+      role: UserRole.Employee
+    };
   }
 }

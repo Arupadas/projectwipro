@@ -1,57 +1,50 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-6">
-      <h1 class="text-white">Batch Management</h1>
+  <aside>
+    <p>Course Management</p>
+    <button (click)="toggleAddBatchForm()">
+      <i class="fa fa-user-o" aria-hidden="true"></i>
+      Add Batch
+    </button>
+    <button >
+      <i class="fa fa-user-o" aria-hidden="true"></i>
+      Edit Batch
+    </button>
+    <button >
+      <i class="fa fa-user-o" aria-hidden="true"></i>
+      Delete Batch
+    </button>
+    <button (click)="toggleAddEnrollEmployeeForm()">
+      <i class="fa fa-user-o" aria-hidden="true"></i>
+      Enroll Employee
+    </button>
+    
+  </aside>
 
-     
-      <form (submit)="createBatch()">
-        <h2 class="text-white">Create / Edit / Delete Batch</h2>
-        <div class="form-group">
-          <label for="batchId" class="text-white"> Batch ID: </label>
-          <input type="text" class="form-control" id="batchId" [(ngModel)]="newBatch.id" name="batchId" required>
-        </div>
-        <div class="form-group">
-          <label for="batchName" class="text-white"> Batch Name: </label>
-          <input type="text" class="form-control" id="batchName" [(ngModel)]="newBatch.name" name="batchName" required>
-        </div>
-        <div class="form-group">
-          <label for="courseId" class="text-white"> Course ID: </label>
-          <input type="text" class="form-control" id="courseId" [(ngModel)]="newBatch.courseId" name="courseId" required>
-        </div>
-        <div class="form-group">
-          <label for="tutor" class="text-white"> Tutor: </label>
-          <input type="text" class="form-control" id="tutor" [(ngModel)]="newBatch.tutor" name="tutor" required>
-        </div>
-        <div class="form-group">
-          <label for="startDate" class="text-white"> Start Date: </label>
-          <input type="date" class="form-control" id="startDate" [(ngModel)]="newBatch.startDate" name="startDate" required>
-        </div>
-        <div class="form-group">
-          <label for="endDate" class="text-white"> End Date: </label>
-          <input type="date" class="form-control" id="endDate" [(ngModel)]="newBatch.endDate" name="endDate" required>
-        </div>
-        <div class="button-container">
-          <button type="submit" class="btn btn-success create-btn">Create Batch</button>
-          <button type="button" class="btn btn-success edit-btn">Edit Batch</button>
-          <button type="button" class="btn btn-success delete-btn">Delete Batch</button>
-        </div>
+  <div class="main-content">
+    <div  *ngIf="showAddBatchForm || showAddEnrollEmployeeForm" class="form-container">
+      <form *ngIf="showAddBatchForm" (ngSubmit)="createBatch()">
+        <label for="batchName">Batch Name:</label>
+        <input id="batchName" [(ngModel)]="newBatch.batchName" name="batchName" required>
+
+        <label for="coursecalendaId">Course CalendarId:</label>
+        <input id="courseDescription" [(ngModel)]="newBatch.coursecalendarId" name="coursecalendarId" required>
+
+        <label for="batchTutortutor">Tutor:</label>
+        <input id="batchTutor" type="string" [(ngModel)]="newBatch.batchTutor" name="batchTutor" required>
+
+        <button type="submit">Add Batch</button>
       </form>
-    </div>
 
-    <div class="col-md-6">
-      
-      <div class="enroll-section">
-        <h2 class="text-white">Enroll Employee</h2>
-        <div class="form-group">
-          <label for="batchSelect" class="text-white"> Select Batch: </label>
-          <input type="text" class="form-control" id="batchSelect" [(ngModel)]="selectedBatchId" name="selectedBatchId" required>
-        </div>
-        <div class="form-group">
-          <label for="employeeId" class="text-white"> Employee ID: </label>
-          <input type="text" class="form-control" id="employeeId" [(ngModel)]="selectedEmployeeId" name="selectedEmployeeId" required>
-        </div>
-        <button class="btn btn-success enroll-btn" (click)="enrollEmployee(selectedBatchId, selectedEmployeeId)">Enroll</button>
-      </div>
+      <form *ngIf="showAddEnrollEmployeeForm" (ngSubmit)="enrollEmployee()">
+        <label for="selectedEmployeeId">Employee Id:</label>
+        <input type="number" class="form-control" id="selectedEmployeeId" [(ngModel)]="selectedEmployeeId" name="selectedEmployeeId" required>
+        
+        <label for="selectedBatchId">Batch Id:</label>
+        <input type="number" class="form-control" id="selectedBatchId" [(ngModel)]="selectedBatchId" name="selectedBatchId" required>
+    
+        <button type="submit">Enroll Employee</button>
+    </form>
+    
     </div>
   </div>
 </div>

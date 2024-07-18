@@ -1,10 +1,103 @@
-<form (ngSubmit)="onSubmit()">
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="username" [(ngModel)]="username" required>
-  
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" [(ngModel)]="password" required>
-  
-    <button type="submit">Login</button>
-    <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
-  </form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Training Management System</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #1b273f;
+        }
+        .login-container {
+            width: 340px;
+            padding: 20px;
+
+        }
+        .login-container h2 {
+            margin: 0 0 20px;
+            font-size: 32px;
+            font-weight: 600;
+            text-align: center;
+        }
+        .login-container form {
+            display: flex;
+            flex-direction: column;
+        }
+        .login-container label {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 6px;
+        }
+        .login-container input {
+            padding: 10px;
+            margin-bottom: 16px;
+            border: 1px solid #c5c5d2;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        .login-container input:focus {
+            outline: none;
+            border-color: #10a37f;
+        }
+        .login-container button {
+            padding: 10px;
+            background-color: #10a37f;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+        .login-container button:hover {
+            background-color: #0e906f;
+        }
+        .login-container .error {
+            color: #d9534f;
+            font-size: 14px;
+            margin-top: 16px;
+            text-align: center;
+        }
+        .login-footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 14px;
+            color: #6e6e80;
+        }
+        .login-footer a {
+            color: #10a37f;
+            text-decoration: none;
+        }
+        .login-footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Welcome back</h2>
+        <form (ngSubmit)="onSubmit()">
+            <label for="username">Email address</label>
+            <input type="email" id="username" name="username" [(ngModel)]="username" required placeholder="Enter your email">
+        
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" [(ngModel)]="password" required placeholder="Enter your password">
+        
+            <button type="submit">Continue</button>
+            <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+        </form>
+        <div class="login-footer">
+            <p>Don't have an account? <a href="#">Sign up</a></p>
+        </div>
+    </div>
+</body>
+</html>

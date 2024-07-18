@@ -29,6 +29,13 @@ import { MatSelectModule } from '@angular/material/select'; // Import MatSelectM
 import { MatListModule } from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon'
 import { MatDivider } from '@angular/material/divider';
+import { BatchService } from './Services/batch.service';
+
+
+
+import { MbscModule } from '@mobiscroll/angular';
+
+
 
 
 
@@ -64,13 +71,15 @@ import { MatDivider } from '@angular/material/divider';
     MatFormFieldModule,
     MatListModule,
     MatDivider ,
-    MatIconModule
+    MatIconModule,
+    MbscModule
   
   ],
   providers: [
     AuthService,
     provideAnimationsAsync(),
-    CourseService
+    //CourseService ,
+    BatchService ,
   
   ],
   bootstrap: [AppComponent]

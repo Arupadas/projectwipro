@@ -1,5 +1,7 @@
 // Import necessary Angular modules and any other dependencies
 import { Component } from '@angular/core';
+import { Batch, BatchEnrollment, EnrollmentStatus } from '../Models/batchmanagement.model';
+import { BatchService } from '../Services/batch.service';
 
 @Component({
   selector: 'app-batch-management', // Replace with your component selector
@@ -7,40 +9,61 @@ import { Component } from '@angular/core';
   styleUrls: ['./batch-management.component.css'] // If you have specific styles for this component
 })
 export class BatchManagementComponent {
-  newBatch: any = {}; // Object to store new batch data
-  selectedBatchId: string = ''; // To store selected batch ID
-  selectedEmployeeId: string = ''; // To store selected employee ID
+  showAddBatchForm = true;
+  showAddEnrollEmployeeForm = false ;
+  newBatch: Batch = {
+    batchName: '',
+    coursecalendarId: null,
+    batchTutor: '',
+  };// Object to store new batch data
+  selectedBatchId: number = 0; // To store selected batch ID
+  selectedEmployeeId: number = 0; // To store selected employee ID
 
-  constructor() {}
+  constructor(private batchService: BatchService) {}
 
+  toggleAddBatchForm() {
+    this.showAddBatchForm = !this.showAddBatchForm;
+    this.showAddEnrollEmployeeForm = false ;
+  }
+  toggleAddEnrollEmployeeForm() {
+    this.showAddEnrollEmployeeForm = !this.showAddEnrollEmployeeForm;
+    this.showAddBatchForm = false ;
+  }
   // Method to create a new batch
   createBatch() {
-    // Implement your logic here to create a new batch
-    console.log('Creating batch:', this.newBatch);
-    // Example: You can send HTTP request to API to create batch
-    // Reset form or clear newBatch object after submission
-    this.resetBatchForm();
+    this.batchService.createBatch(this.newBatch).subscribe({
+      next: (createdBatch) => {
+        console.log('Batch created:', createdBatch);
+        this.resetBatchForm();
+      },
+      error: (error) => console.error('Error creating batch:', error)
+    });
   }
 
   // Method to enroll an employee to a batch
-  enrollEmployee(batchId: string, employeeId: string) {
-    // Implement your logic here to enroll an employee to a batch
-    console.log('Enrolling employee:', batchId, employeeId);
-    // Example: You can send HTTP request to API to enroll employee
-    // Clear selectedBatchId and selectedEmployeeId after enrollment
-    this.selectedBatchId = '';
-    this.selectedEmployeeId = '';
+  enrollEmployee() {
+    const enrollment: BatchEnrollment = {
+      batchId: this.selectedBatchId,
+      employeeId: this.selectedEmployeeId,
+      status: EnrollmentStatus.Pending
+    };
+
+    this.batchService.enrollEmployee(enrollment).subscribe({
+      next: (createdEnrollment) => {
+        console.log('Employee enrolled:', createdEnrollment);
+        this.selectedBatchId = 0;
+        this.selectedEmployeeId = 0;
+      },
+      error: (error) => console.error('Error enrolling employee:', error)
+    });
   }
 
   // Optional method for resetting the newBatch form after submission
   resetBatchForm() {
     this.newBatch = {
-      id: '',
-      name: '',
-      courseId: '',
-      tutor: '',
-      startDate: null, // Update based on your data model
-      endDate: null // Update based on your data model
+      batchName: '',
+      coursecalendarId: null,
+      batchTutor: '',
     };
   }
 }

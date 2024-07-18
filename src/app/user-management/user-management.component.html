@@ -14,11 +14,15 @@
             <input type="email" id="email" name="email" [(ngModel)]="newUser.email" required class="form-control">
           </div>
           <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" [(ngModel)]="newUser.passwordHash" required class="form-control">
+          </div>
+          <div class="form-group">
             <label for="role">Role:</label>
             <select id="role" name="role" [(ngModel)]="newUser.role" required class="form-control">
-              <option value="admin">Admin</option>
-              <option value="manager">Manager</option>
-              <option value="user">Employee</option>
+              <option value="Admin">Admin</option>
+              <option value="Manager">Manager</option>
+              <option value="Employee">Employee</option>
             </select>
           </div>
           <button type="submit" class="btn btn-primary">Create User</button>

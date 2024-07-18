@@ -1,2 +1,11 @@
-<!-- course-calendar.component.html -->
-
+<mbsc-eventcalendar [data]="calendarEvents" [view]="view" [agendaTemplate]="myTemplate">
+    <ng-template #myTemplate let-data>
+      <ul *ngFor="let day of data; trackBy: getDayKey" mbsc-event-list-day [timestamp]="day.timestamp">
+        <li>{{day.date}}</li>
+        <li *ngFor="let event of day.events; trackBy: getEventKey">
+          {{event.title}}
+        </li>
+      </ul>
+    </ng-template>
+  </mbsc-eventcalendar>
+  

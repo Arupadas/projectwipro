@@ -166,4 +166,43 @@
       grid-template-columns: 1fr;
     }
   }
+
+
+  .task-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #3788d8;
+    margin: 0 auto;
+  }
+  
+  .fc-event {
+    background-color: transparent !important;
+    border: none !important;
+  }
+  
+  .fc-event:hover .task-dot {
+    transform: scale(1.5);  /* Example: Enlarge dot on hover */
+    transition: transform 0.2s;
+  }
+  
+  /* Tooltip styles */
+  .fc-event {
+    position: relative;
+  }
+  
+  .fc-event:hover::after {
+    content: attr(title);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    z-index: 1000;
+  }
   

@@ -17,16 +17,21 @@ export class CourseComponent implements OnInit {
   selectedCalendar: { [courseId: number]: CourseCalendar } = {};
   openCourseId: number | null = null;
   calendarOptions: CalendarOptions = {
-    plugins: [dayGridPlugin],
+    plugins: [dayGridPlugin , interactionPlugin],
     initialView: 'dayGridMonth',
-    events: []
+    events: [] ,
   };
 
   constructor(private courseService: CourseService) { }
 
   ngOnInit(): void {
-    this.courseService.getCourses().subscribe(data => {
-      this.courses = data;
+    this.courseService.getCourses().subscribe({
+      next: (data) => {
+        this.courses = data;
+      },
+      error: (error) => {
+        console.error('Error fetching courses:', error);
+      }
     });
     this.loadEnrollments();
   }
@@ -49,15 +54,34 @@ export class CourseComponent implements OnInit {
     this.calendarOptions = {
       ...this.calendarOptions,
       events: dailyTasks.map(task => ({
-        title: task.taskDescription,
-        start: task.day
-      }))
+        title: '',  // Empty title, description handled in extendedProps
+        start: task.day,
+        extendedProps: {
+          description: task.taskDescription  // Store description in extendedProps
+        }
+      })),
+      eventContent: (arg) => {
+        return { html: `<div class="task-dot" title="${arg.event.extendedProps['description']}"></div>` };
+      },
+      eventMouseEnter: (mouseEnterInfo) => {
+        // Optional: Add additional hover effects if needed
+      },
+      eventMouseLeave: (mouseLeaveInfo) => {
+        // Optional: Add additional hover effects if needed
+      }
     };
   }
-
+  
+  
   loadEnrollments(): void {
     this.courseService.getBatches().subscribe((data: any[]) => {
       this.batches = data;
     });
+  }
+
+  renderEventContent(eventInfo: any) {
+    return {
+      html: `<div class="custom-event-content" title="${eventInfo.event.title}"></div>`
+    };
   }
 }

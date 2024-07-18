@@ -25,6 +25,7 @@
     "@fullcalendar/core": "^6.1.15",
     "@fullcalendar/daygrid": "^6.1.15",
     "@fullcalendar/interaction": "^6.1.15",
+    "@mobiscroll/angular": "npm:@mobiscroll/angular-ivy-trial@^5.31.2",
     "angular-calendar": "^0.31.1",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
