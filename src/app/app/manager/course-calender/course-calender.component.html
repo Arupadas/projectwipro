@@ -1,1 +1,35 @@
-<p>course-calender works!</p>
+<div class="batch-calendar-container">
+  <h2>{{ courseName }}</h2>
+
+  <div class="date-info">
+    <div class="date-item start-date">
+      <strong>Start Date:</strong>
+      <p>{{ startDate | date: 'fullDate' }}</p>
+    </div>
+    <div class="date-item end-date">
+      <strong>End Date:</strong>
+      <p>{{ endDate | date: 'fullDate' }}</p>
+    </div>
+  </div>
+
+  <div class="mbsc-eventcalendar">
+    <div class="mbsc-calendar-inner">
+      <mbsc-eventcalendar [data]="calendarEvents" [view]="view" [agendaTemplate]="myTemplate">
+        <ng-template #myTemplate let-data>
+          <ul *ngFor="let day of data; trackBy: getDayKey" mbsc-event-list-day [timestamp]="day.timestamp">
+            <li>{{day.date}}</li>
+            <li *ngFor="let event of day.events; trackBy: getEventKey">
+              {{event.title}}
+            </li>
+          </ul>
+        </ng-template>
+      </mbsc-eventcalendar>
+    </div>
+  </div>
+  <div class="mb-3 text-center button-container">
+    <button class="btn btn-light" (click)="goBack()">
+      <span class="material-icons md-24 align-middle">arrow_back</span>
+      Back to Course List
+    </button>
+  </div>
+</div>

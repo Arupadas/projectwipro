@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Batch, Enrollments } from '../models/batch.model';
+import { Batch, BatchEnrollment } from '../models/batch.model';
 import { Router } from '@angular/router';
 import { BatchService } from '../services/batch.service';
 
@@ -34,7 +34,7 @@ fetchBatches():void{
      );
    }
 
-  handleRequest(batch:Batch,enrollment:Enrollments,action:string): void{
+  handleRequest(batch:Batch,enrollment:BatchEnrollment,action:string): void{
     batch.enrollments=batch.enrollments.filter(e=>e.status===0);
     this.updateStatus(batch.id,enrollment.status,action);
   }
@@ -48,15 +48,7 @@ fetchBatches():void{
         }else{
           enrollment.status=1;
         }
-        
-        this.batchServices.putStatus(batch).subscribe(
-          response=>{
-            console.log('Updated',response);
-          },error=>{
-               console.error("Error",error)
-          }
-          
-        )
+    
       }
     }
   }

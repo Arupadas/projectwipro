@@ -1,0 +1,102 @@
+.course-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+.course-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  margin: 15px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(145deg, #f0f0f0, #ffffff);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.course-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.course-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 10px;
+}
+
+.course-header h3 {
+  margin: 0;
+  font-size: 1.5em;
+  color: #333;
+}
+
+.course-date {
+  font-size: 0.9em;
+  color: #666;
+}
+
+.course-description {
+  margin: 0;
+  color: #555;
+  font-size: 1em;
+  line-height: 1.4em;
+}
+
+p {
+  font-size: 1.2em;
+  color: #666;
+}
+
+@media (max-width: 600px) {
+  .course-card {
+    max-width: 100%;
+  }
+}
+
+
+/* Styles for the available-batch-heading */
+.available-batch-heading {
+  text-align: center; /* Center-align the heading text */
+  margin-bottom: 30px; /* Space below the heading */
+  padding: 15px; /* Padding around the heading */
+  background-color: #f8f9fa; /* Background color for the heading container */
+  border-radius: 10px; /* Rounded corners for the heading container */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 70%; /* Shadow for a card-like effect */
+}
+
+.available-batch-heading h2 {
+  font-size: 3em; /* Larger font size for prominence */
+  color: #333; /* Dark text color for contrast */
+  margin: 0; /* Remove default margin for the heading */
+  display: flex; /* Flexbox to align icon and text */
+  align-items: center; /* Center-align items vertically */
+  justify-content: center; /* Center-align items horizontally */
+}
+
+.available-batch-heading .material-icons.md-36 {
+  font-size: 2.5rem; /* Adjust icon size to be proportional */
+  color: #333; /* Match icon color with text color */
+  margin-right: 10px; /* Space between icon and text */
+}
+
+/* Media query adjustments for smaller screens */
+@media (max-width: 600px) {
+  .available-batch-heading h2 {
+    font-size: 2.2em; /* Slightly smaller font size on smaller screens */
+  }
+
+  .available-batch-heading .material-icons.md-36 {
+    font-size: 2rem; /* Slightly smaller icon size on smaller screens */
+  }
+}

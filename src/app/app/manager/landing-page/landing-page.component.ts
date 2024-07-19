@@ -4,17 +4,29 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-landing-page',
   templateUrl: './landing-page.component.html',
-  styleUrl: './landing-page.component.css'
+  styleUrls: ['./landing-page.component.css']
 })
 export class LandingPageComponent {
-constructor(private router: Router) {}
 
-navigateTo(option: string): void {
-  if (option === 'batches') {
-    this.router.navigate(['batches']);
-  } else if (option === 'approval'){
-    this.router.navigate(['approval']);
+  constructor(private router: Router) {}
+
+  navigateTo(option: string): void {
+    switch (option) {
+      case 'batches':
+        this.router.navigate(['/batches']);
+        break;
+      case 'approval':
+        this.router.navigate(['/approval']);
+        break;
+      case 'calendar':
+        this.router.navigate(['/calendar']);
+        break;
+        case 'courselist':
+          this.router.navigate(['courselist']);
+          break;
+      default:
+        // Handle default case or add additional routes as needed
+        break;
+    }
   }
-  //this.router.navigate(['/manager/{route}']);
-}
 }

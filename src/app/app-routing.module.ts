@@ -13,7 +13,8 @@ import { BatchManagementComponent } from './batch-management/batch-management.co
 import { BatchesComponent } from './app/manager/batches/batches.component';
 import { ParticipantRequestComponent } from './app/manager/participant-request/participant-request.component';
 import { UserManagementComponent } from './user-management/user-management.component';
-
+import { CourseCalenderManagerComponent} from './app/manager/course-calender/course-calender.component';
+import{CourseListComponent} from './app/manager/courses-list/courses-list.component'
 
 
 
@@ -30,6 +31,8 @@ const routes: Routes = [
   { path: 'course-management', component: CourseManagementComponent},
   {path : 'batch-management' , component :BatchManagementComponent} ,
   {path : 'user-management' , component :UserManagementComponent} ,
+  { path: 'courseManager/:id', component: CourseCalenderManagerComponent },
+  {path : 'courselist' , component :CourseListComponent},
 
 
 

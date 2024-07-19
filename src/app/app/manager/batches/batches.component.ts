@@ -1,54 +1,46 @@
 import { Component, OnInit } from '@angular/core';
 import { BatchService } from '../services/batch.service';
-import { Batch } from '../models/batch.model';
+import { Batch, BatchEnrollment, EnrollmentStatus } from '../models/batch.model'; // Ensure EnrollmentStatus is imported
 import { Router } from '@angular/router';
 
-
 @Component({
-  selector: 'app-batches',
-  templateUrl: './batches.component.html',
-  styleUrl: './batches.component.css'
+    selector: 'app-batches',
+    templateUrl: './batches.component.html',
+    styleUrls: ['./batches.component.css']
 })
 export class BatchesComponent implements OnInit {
-   batches:Batch[]=[];
-   expandedBatchId:number | null=null;
-   //batchId!:number ;
+    batches: Batch[] = [];
+    expandedBatchIds: number[] = [];
+    searchQuery: string = '';
 
-   constructor(private batchServices:BatchService,private router:Router) {}
-  ngOnInit(): void {
-    
-    this.fetchBatches();
-}
+    constructor(private batchService: BatchService, private router: Router) {}
 
-fetchBatches():void{
-  this.batchServices.getBatches().subscribe(
-    (data:Batch[])=>{
-      this.batches=data;
-    },
-   error=>{
-    console.error('Error fetching batches',error);
-          }
-     );
-   }
+    ngOnInit(): void {
+        this.fetchBatches();
+    }
 
-   toggleExpand(batchId:number):void{
-    this.expandedBatchId=this.expandedBatchId===batchId?null:batchId;
-   }
+    fetchBatches(): void {
+        this.batchService.getBatches().subscribe(
+            (data: Batch[]) => {
+                this.batches = data;
+            },
+            error => {
+                console.error('Error fetching batches', error);
+            }
+        );
+    }
 
-   getStatusIcon(status:any):string{
-    /* switch(status){
-      case 0:
-        return 'hourglass_empty';
-      case 1:
-        return 'cancel';
-      case 2:
-        return 'thumb_up'
-      case 3:
-        return 'check_circle'   
-        default:
-          return 'help'    
-     }*/
-       if(status==0 || status=='Pending'){
+    toggleExpand(batchId: number): void {
+        const index = this.expandedBatchIds.indexOf(batchId);
+        if (index === -1) {
+            this.expandedBatchIds.push(batchId);
+        } else {
+            this.expandedBatchIds.splice(index, 1);
+        }
+    }
+
+    getStatusIcon(status:any): string {
+      if(status==0 || status=="Pending"){
         return 'hourglass_empty';
        }else if(status==1 || status=='Rejected'){
         return 'cancel'
@@ -59,9 +51,35 @@ fetchBatches():void{
        }else{
         return 'help' 
        }
-   }
+    }
 
-   goBack():void{
-    this.router.navigate(['manager-dashboard']);
-   }
+    getStatusIconClass(status: EnrollmentStatus): string {
+        switch (status) {
+            case EnrollmentStatus.Pending:
+                return 'text-warning';
+            case EnrollmentStatus.Rejected:
+                return 'text-danger';
+            case EnrollmentStatus.Accepted:
+                return 'text-success';
+            case EnrollmentStatus.Enrolled:
+                return 'text-primary';
+            default:
+                return 'text-muted';
+        }
+    }
+
+    filteredBatches(): Batch[] {
+        if (!this.searchQuery) {
+            return this.batches;
+        }
+        const lowerCaseQuery = this.searchQuery.toLowerCase();
+        return this.batches.filter(batch =>
+            batch.batchName.toLowerCase().includes(lowerCaseQuery) ||
+            batch.batchTutor.toLowerCase().includes(lowerCaseQuery)
+        );
+    }
+
+    goBack(): void {
+        this.router.navigate(['manager-dashboard']);
+    }
 }

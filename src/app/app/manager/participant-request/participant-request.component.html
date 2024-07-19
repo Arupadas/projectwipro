@@ -2,56 +2,55 @@
     <div class="heading-div mb-4">
       <h2 class="heading-text">
         <span class="material-icons md-48">group</span>
-        Participant Requests</h2>
-</div>
-<div *ngIf="batches.length>0; else noRequests" class="card mb-2 bg-dark text-white">
-<!--<ul class="list-group list-group-flush">-->
-    <div *ngFor="let batch of batches" class="list-group bg-dark text-white">
-        <div *ngFor="let enrollment of batch.enrollments" >
-            <div *ngIf="enrollment.status==='Pending'; else noDiv">
-                <ul class="list-group-item list-group-flush">
-        <div class="row align-iteams-center">
-            <div class="col-md-2">
-            <span class="material-icons md-24">person</span>
-            {{batch.batchTutor}}
-        </div>
-        <div class="col-md-3">
-            <span class="material-icons md-24">folder</span>
-            {{batch.batchName}}
-        </div>
-        <!-- <div *ngFor="let enrollment of batch.enrollments" >-->
-        <div class="col-md-2">
-            <span class="material-icons md-24">info</span>
-            {{enrollment.status}}
-        </div>
-    <!--</div>-->
-        <div class="col-md-5 text-right">
-            <div class="row">
-                <div class="col-md-2 mr-2">
-            <button class="btn btn-creative btn-reject "  (click)="handleRequest(batch,enrollment,'cancel')">
-                <span class="material-icons md-24">cancel</span>
-            </button>
-        </div>
-        <div class="col-md-2 mr-2">
-            <button class="btn btn-creative btn-accept " (click)="handleRequest(batch,enrollment,'accept')">
-                <span class="material-icons md-24">check_circle</span>
-            </button>
-        </div>
-        </div>
-        </div>     
-        </div>
-    </ul>
+        Participant Requests
+      </h2>
     </div>
-</div>
-</div>
-
-</div>
-  <ng-template #noRequests>
-    <div class="alert alert-info text-center">
+  
+    <div *ngIf="batches.length > 0; else noRequests">
+      <div *ngFor="let batch of batches">
+        <div *ngFor="let enrollment of batch.enrollments">
+          <div *ngIf="enrollment.status ==='Pending'; else noDiv" class="list-group-item list-group-flush bg-dark text-white">
+            <div class="row align-items-center">
+              <div class="col-md-2">
+                <span class="material-icons md-24">person</span>
+                {{ batch.batchTutor }}
+              </div>
+              <div class="col-md-3">
+                <span class="material-icons md-24">folder</span>
+                {{ batch.batchName }}
+              </div>
+              <div class="col-md-2">
+                <span class="material-icons md-24">info</span>
+                Pending
+              </div>
+              <div class="col-md-5 text-right">
+                <div class="row">
+                  <div class="col-md-2 mr-2">
+                    <button class="btn btn-creative btn-reject" (click)="handleRequest(batch, enrollment, 'reject')">
+                      <span class="material-icons md-24">cancel</span> Reject
+                    </button>
+                  </div>
+                  <div class="col-md-2">
+                    <button class="btn btn-creative btn-accept" (click)="handleRequest(batch, enrollment, 'accept')">
+                      <span class="material-icons md-24">check_circle</span> Accept
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <ng-template #noRequests>
+      <div class="alert alert-info text-center">
         No participant requests available.
-    </div>
-  </ng-template>
-  <ng-template #noDiv>
-    <div></div>
-  </ng-template>
-</div>
+      </div>
+    </ng-template>
+  
+    <ng-template #noDiv>
+      <div></div> <!-- Placeholder for noDiv template content -->
+    </ng-template>
+  </div>
+  

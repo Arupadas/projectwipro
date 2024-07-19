@@ -1,0 +1,138 @@
+.batch-calendar-container {
+  padding: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+h2 {
+  font-size: 2em;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.date-info {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.date-item {
+  flex: 1;
+  max-width: 250px; /* Reduced maximum width */
+  padding: 10px; /* Reduced padding */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Reduced shadow for depth */
+  background-color: #f9f9f9; /* Background color */
+  text-align: center;
+  margin: 0 5px; /* Spacing between cards */
+  font-size: 0.9em; /* Smaller font size */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+}
+
+.date-item:hover {
+  transform: scale(1.05); /* Slightly increase size on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Enhance shadow on hover */
+}
+
+.start-date {
+  border: 2px solid #388e3c; /* Darker green */
+  background-color: #e8f5e9; /* Light green */
+}
+
+.end-date {
+  border: 2px solid #d32f2f; /* Darker red */
+  background-color: #ffebee; /* Light red */
+}
+
+/* Enhanced visible border around calendar with background color */
+.mbsc-eventcalendar {
+  margin: 20px 0;
+  border: 3px solid #0288d1; /* Blue border */
+  border-radius: 12px; /* Rounded corners */
+  padding: 15px; /* Padding inside the border */
+  background-color: #f5f5f5; /* Light grey background */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow for depth */
+  transition: box-shadow 0.3s ease; /* Smooth shadow transition */
+  position: relative; /* Positioning context for inner border */
+}
+
+/* Inner border for calendar content */
+.mbsc-calendar-inner {
+  border: 2px solid #007bff; /* Inner border color */
+  border-radius: 8px; /* Rounded corners for inner border */
+  padding: 10px; /* Padding inside the inner border */
+  background-color: #ffffff; /* Background color for inner content */
+}
+
+/* Hover effect for the calendar */
+.mbsc-eventcalendar:hover {
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+.day-header {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.event-item {
+  margin: 5px 0;
+}
+
+.event-title {
+  display: inline-block;
+  padding: 5px;
+  border-radius: 4px;
+  background-color: #e3f2fd; /* Light blue for event titles */
+  color: #0277bd; /* Darker blue text color */
+}
+
+/* Borders for start and end date markers */
+.start-date-marker {
+  border: 2px solid #388e3c; /* Darker green */
+  background-color: #e8f5e9; /* Light green */
+}
+
+.end-date-marker {
+  border: 2px solid #d32f2f; /* Darker red */
+  background-color: #ffebee; /* Light red */
+}
+
+/* Container for the button */
+.button-container {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center;     /* Center vertically */
+  height: 100%;            /* Ensure the container takes full height of its parent */
+  text-align: center;      /* Center text inside the container */
+}
+
+.btn-light {
+  color: #343a40;
+  background-color: #ffffff;
+  border-color: #343a40;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem; /* Adjust padding as needed */
+}
+
+.btn-light:hover {
+  color: #ffffff;
+  background-color: #343a40;
+  border-color: #343a40;
+}
+
+.btn-light .material-icons {
+  font-size: 24px; /* Ensure icon size matches your design */
+  margin-right: 8px; /* Space between icon and text */
+  vertical-align: middle; /* Align icon with text */
+}
+
+.btn-light:focus, .btn-light.focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.5);
+}
+
+
+
+

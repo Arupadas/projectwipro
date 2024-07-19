@@ -1,107 +1,187 @@
-.container{
-    background-color: #343a40;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+/* Base styles */
+body {
+    background-color: #f8f9fa;
 }
 
+.container {
+    background-color: #f8f9fa;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-.card{
-    background-color: #212529;
+.card {
+    background-color: #ffffff;
     border: none;
     border-radius: 10px;
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.card:hover{
+.card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-.card-header{
-    background-color: #1c1f23;
-    color: #ffffff;
-    border-bottom: 1px solid #343a40;
+.card-header {
+    background-color: #e9ecef;
+    color: #343a40;
+    border-bottom: 1px solid #dee2e6;
 }
 
-.card-body{
-    background-color: #343a40;
-    color: #ffffff;
+.card-body {
+    background-color: #f8f9fa;
+    color: #343a40;
 }
 
-ul{
+ul {
     list-style-type: none;
     padding: 0;
 }
 
-li{
+li {
     padding: 10px 0;
 }
 
-.alert-info{
-    background-color: #007bff;
+.alert-info {
+    background-color: #17a2b8;
     color: #ffffff;
     border: none;
     border-radius: 10px;
 }
 
-.collapse.show{
+.collapse.show {
     padding: 15px;
-    border-top: 1px solid #343a40;
+    border-top: 1px solid #dee2e6;
 }
 
-.material-icons.md-24{
+.material-icons.md-24 {
     font-size: 24px;
     vertical-align: middle;
     margin-right: 5px;
 }
 
-.btn-outline-light{
-    color:#ffffff;
-    border-color: #ffffff;
+.btn-outline-light {
+    color: #343a40;
+    border-color: #343a40;
     margin: auto;
 }
 
-.btn-outline-light:hover{
-    color: #343a40;
-    background-color: #ffffff;
+.btn-outline-light:hover {
+    color: #ffffff;
+    background-color: #343a40;
 }
 
-.material-icons{
+.material-icons {
     vertical-align: middle;
     margin-right: 5px;
 }
 
-.mb-3.up{
+.mb-3.up {
     margin-bottom: 10px;
 }
 
-.mb-3.bottom{
+.mb-3.bottom {
     margin-top: 10px;
 }
 
-
-.available-batch-heading{
+.available-batch-heading {
     text-align: center;
     margin-bottom: 30px;
-    background-color:#212529;
-    color:#ffffff;
-    padding: 0.1px;
+    background-color: #e9ecef;
+    color: #343a40;
+    padding: 8px;
     border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
 }
 
-.available-batch-heading h2{
+.available-batch-heading h2 {
     font-size: 2.0rem;
     margin: 0;
-    color: #ffffff;
+    color: #343a40;
 }
 
-.material-icons.md36{
+.material-icons.md-36 {
     vertical-align: middle;
     font-size: 3rem;
-    color: #ffffff;
+    color: #343a40;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 1200px) {
+    .container {
+        padding: 20px;
+    }
+    .available-batch-heading h2 {
+        font-size: 1.8rem;
+    }
+    .material-icons.md-36 {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .container {
+        padding: 15px;
+    }
+    .card {
+        margin-bottom: 15px;
+    }
+    .available-batch-heading h2 {
+        font-size: 1.6rem;
+    }
+    .material-icons.md-36 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    .card {
+        margin-bottom: 10px;
+    }
+    .card-header, .card-body {
+        padding: 10px;
+    }
+    .available-batch-heading h2 {
+        font-size: 1.4rem;
+    }
+    .material-icons.md-36 {
+        font-size: 1.8rem;
+    }
+    .material-icons.md-24 {
+        font-size: 20px;
+    }
+    .btn-outline-light {
+        padding: 5px 10px;
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        padding: 5px;
+    }
+    .card {
+        margin-bottom: 5px;
+    }
+    .card-header, .card-body {
+        padding: 5px;
+    }
+    .available-batch-heading h2 {
+        font-size: 1.2rem;
+    }
+    .material-icons.md-36 {
+        font-size: 1.6rem;
+    }
+    .material-icons.md-24 {
+        font-size: 18px;
+    }
+    .btn-outline-light {
+        padding: 3px 8px;
+        font-size: 0.9rem;
+    }
 }

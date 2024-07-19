@@ -1,0 +1,21 @@
+<div class="course-list">
+  <div class="available-batch-heading text-center">
+    <h2 class="mb-4 text-dark">
+        <span class="material-icons md-36">book</span>
+        Available Batches
+    </h2>
+</div>
+  <div *ngIf="courses.length > 0; else noCourses">
+    <div *ngFor="let course of courses" (click)="selectCourse(course)" class="course-card">
+      <div class="course-header">
+        <h3>{{ course.courseName }}</h3>
+        <span class="course-date">{{ course.courseCalendar.startDate |date: 'shortDate' }}</span>
+      </div>
+      <p class="course-description">{{ course.courseDescription }}</p>
+      <!-- Add more course details here if needed -->
+    </div>
+  </div>
+  <ng-template #noCourses>
+    <p>No courses available.</p>
+  </ng-template>
+</div>
