@@ -4,8 +4,12 @@
       <div class="course-card" *ngFor="let course of courses">
         <mat-card class="course-mat-card">
           <mat-card-header>
+            <mat-icon mat-card-avatar>school</mat-icon>
             <mat-card-title>{{ course.courseName }}</mat-card-title>
-            <mat-card-subtitle>Duration: {{ course.duration }} days</mat-card-subtitle>
+            <mat-card-subtitle>
+              <mat-icon>access_time</mat-icon>
+              Duration: {{ course.duration }} days
+            </mat-card-subtitle>
           </mat-card-header>
           <mat-card-content>
             <p>{{ course.courseDescription }}</p>
@@ -28,7 +32,7 @@
   </section>
   <section>
     <div class="batch-grid">
-      <mat-card *ngFor="let batch of batches" class="batch-card batch-mat-card" [ngStyle]="{'background-image': 'url(' + batch.imageUrl + ')'}">
+      <mat-card *ngFor="let batch of batches" class="batch-card batch-mat-card" [ngStyle]="{'background-image': 'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(' + batch.imageUrl + ')'}">
         <mat-card-header>
           <div mat-card-avatar class="batch-avatar">
             {{ batch.batchName.charAt(0) }}
@@ -46,7 +50,7 @@
           </h3>
           <mat-divider></mat-divider>
           <ul class="enrollment-list">
-            <li *ngFor="let enrollment of batch.enrollments" class="enrollment-item">
+            <li *ngFor="let enrollment of batch.enrollments; let i = index" class="enrollment-item" [style.animation-delay]="i * 0.1 + 's'">
               <div class="enrollment-info">
                 <mat-icon>person_outline</mat-icon>
                 <span class="employee-id">ID: {{ enrollment.employeeId }}</span>
@@ -56,6 +60,7 @@
               </div>
             </li>
           </ul>
+          
         </mat-card-content>
         <mat-card-actions align="end">
           <button mat-button color="primary">View Details</button>

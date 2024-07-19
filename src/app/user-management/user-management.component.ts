@@ -56,10 +56,11 @@ export class UserManagementComponent implements OnInit {
   editUser(user: User) {
     this.selectedUser = { ...user };
     this.showAddUserForm = false;
+    this.showUserList = false;
   }
 
   deleteUser(userID: number) {
-    if (userID != null && userID !== undefined) {
+    if (confirm('Are you sure you want to delete this user?')) {
       this.userService.deleteUser(userID).subscribe({
         next: () => {
           console.log('User deleted');
@@ -67,16 +68,7 @@ export class UserManagementComponent implements OnInit {
         },
         error: (error) => console.error('Error deleting user:', error)
       });
-    } else {
-      console.error('Invalid userID');
     }
-  }
-
-  resetUserForm() {
-    this.newUser = this.getDefaultUser();
-    this.selectedUser = null;
-    this.showAddUserForm = false;
-    this.showUserList = true;
   }
 
   updateUser() {
@@ -100,6 +92,15 @@ export class UserManagementComponent implements OnInit {
   cancelEdit() {
     this.resetUserForm();
   }
+
+  resetUserForm() {
+    this.newUser = this.getDefaultUser();
+    this.selectedUser = null;
+    this.showAddUserForm = false;
+    this.showUserList = true;
+  }
+
+
 
   private getDefaultUser(): User {
     return {

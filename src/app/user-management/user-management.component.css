@@ -278,10 +278,13 @@ aside {
 
 .user-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
+
 
 .user-card {
   background-color: var(--card-background);
@@ -291,12 +294,15 @@ aside {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
+
 
 .user-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
+
 
 .user-avatar {
   background-color: var(--primary-color);
@@ -308,10 +314,13 @@ aside {
   align-items: center;
 }
 
-.user-info {
-  padding: 20px;
-  flex-grow: 1;
+
+.user-info p i {
+  margin-right: 10px;
+  color: var(--secondary-color);
 }
+
+
 
 .user-info h3 {
   margin: 0 0 10px;
@@ -354,15 +363,18 @@ aside {
 .user-meta {
   font-size: 0.9em;
   color: #7f8c8d;
-  margin-top: 10px;
+  margin-top: auto;
 }
+
 
 .user-actions {
   display: flex;
   justify-content: flex-end;
   padding: 10px;
   background-color: #f8f9fa;
+  margin-top: auto;
 }
+
 
 .user-actions button {
   background: none;
@@ -383,4 +395,16 @@ aside {
 
 .user-actions button:hover {
   opacity: 0.8;
+}
+
+@media screen and (max-width: 1200px) {
+  .user-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .user-grid {
+    grid-template-columns: 1fr;
+  }
 }
